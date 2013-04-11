@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Darktt. All rights reserved.
 //
 
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "DTPhotoViewController.h"
 
 @interface DTPhotoViewController ()
@@ -14,12 +15,21 @@
 
 @implementation DTPhotoViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
++ (id)photoViewWithAssetsGroup:(ALAssetsGroup *)group mode:(DTAlbumMode)mode
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+    DTPhotoViewController *photoViewController = [[[DTPhotoViewController alloc] initWithAssetsGroup:group mode:mode] autorelease];
+    
+    return photoViewController;
+}
+
+- (id)initWithAssetsGroup:(ALAssetsGroup *)group mode:(DTAlbumMode)mode
+{
+    self = [super initWithNibName:@"DTPhotoViewController" bundle:nil];
+    
+    if (self == nil) return nil;
+    
+    NSLog(@"%@", [group valueForProperty:ALAssetsGroupPropertyName]);
+    
     return self;
 }
 

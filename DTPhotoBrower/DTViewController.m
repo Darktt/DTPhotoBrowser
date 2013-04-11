@@ -32,7 +32,7 @@
 
 - (void)openPhotoBrower:(id)sender
 {
-    DTAlbumViewController *photoViewController = [DTAlbumViewController photoViewWithPhotoMode:DTPhotoViewNormalMode];
+    DTAlbumViewController *photoViewController = [DTAlbumViewController albumViewWithPhotoMode:DTAlbumModeNormal];
     UINavigationController *navController = [UINavigationController navigationWithRootViewController:photoViewController];
     
     [self presentViewController:navController animated:YES completion:nil];

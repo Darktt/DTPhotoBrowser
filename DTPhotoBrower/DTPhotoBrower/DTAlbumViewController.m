@@ -1,6 +1,6 @@
 //
 //  DTAlbumViewController.m
-//  DTPhotoBrower
+//  DTAlbumBrower
 //
 //  Created by Darktt on 13/4/11.
 //  Copyright (c) 2013 Darktt. All rights reserved.
@@ -10,6 +10,7 @@
 #import "Catagorys.h"
 #import "DTAlbumViewController.h"
 #import "DTTableViewCell.h"
+#import "DTPhotoViewController.h"
 
 #define kAlertTitle @"Emty Album"
 #define kAlertMessage @"Your Album is emty."
@@ -25,27 +26,27 @@
 
 @implementation DTAlbumViewController
 
-+ (id)photoViewWithPhotoMode:(DTPhotoViewMode)mode
++ (id)albumViewWithPhotoMode:(DTAlbumMode)mode
 {
-    DTAlbumViewController *photoViewController = nil;
+    DTAlbumViewController *albumViewController = nil;
     
     switch (mode) {
-        case DTPhotoViewNormalMode:
-            photoViewController = [[[DTAlbumViewController alloc] initWithPhotoNormalMode] autorelease];
+        case DTAlbumModeNormal:
+            albumViewController = [[[DTAlbumViewController alloc] initWithPhotoNormalMode] autorelease];
             break;
             
-        case DTPhotoViewCopyMode:
-            photoViewController = [[[DTAlbumViewController alloc] initWithPhotoCopyMode] autorelease];
+        case DTAlbumModeCopy:
+            albumViewController = [[[DTAlbumViewController alloc] initWithPhotoCopyMode] autorelease];
             break;
             
         default:
             break;
     }
     
-    return photoViewController;
+    return albumViewController;
 }
 
-+ (id)photoViewWithPhotoStyle:(DTPhotoViewStyle)style mode:(DTPhotoViewMode)mode
++ (id)albumViewWithPhotoStyle:(DTAlbumViewStyle)style mode:(DTAlbumMode)mode
 {
     DTAlbumViewController *photoViewController = [[[DTAlbumViewController alloc] initWithPhotoStyle:style mode:mode] autorelease];
     
@@ -72,7 +73,7 @@
     return self;
 }
 
-- (id)initWithPhotoStyle:(DTPhotoViewStyle)style mode:(DTPhotoViewMode)mode
+- (id)initWithPhotoStyle:(DTAlbumViewStyle)style mode:(DTAlbumMode)mode
 {
     self = [super initWithNibName:@"DTAlbumViewController" bundle:nil];
     
@@ -215,6 +216,9 @@
     
     ALAssetsGroup *group = [alassetsGroups objectAtIndex:indexPath.row];
     NSLog(@"%@, %d", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]);
+    
+    DTPhotoViewController *photoView = [DTPhotoViewController photoViewWithAssetsGroup:group mode:DTAlbumModeNormal];
+    [self.navigationController pushViewController:photoView animated:YES];
 }
 
 @end
