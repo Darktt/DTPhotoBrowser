@@ -187,7 +187,7 @@
     DTTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         if (indexPath) {
-            cell = [DTTableViewCell tableCellWithStyle:DTTableViewCellStyleBlack reuseIdentifier:CellIdentifier];
+            cell = [DTTableViewCell tableCellWithStyle:DTTableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
@@ -215,7 +215,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     ALAssetsGroup *group = [alassetsGroups objectAtIndex:indexPath.row];
-    NSLog(@"%@, %d", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]);
+//    NSLog(@"%@, %d", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]);
     
     DTPhotoViewController *photoView = [DTPhotoViewController photoViewWithAssetsGroup:group mode:DTAlbumModeNormal];
     [self.navigationController pushViewController:photoView animated:YES];

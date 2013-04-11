@@ -39,6 +39,9 @@
 		55EFE5D21716899B0020995D /* EmtyPhotoNormalStyle.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5D01716899B0020995D /* EmtyPhotoNormalStyle.png */; };
 		55EFE5D6171693B40020995D /* DTPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5D4171693B40020995D /* DTPhotoViewController.m */; };
 		55EFE5D7171693B40020995D /* DTPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5D5171693B40020995D /* DTPhotoViewController.xib */; };
+		55EFE5DD17169D080020995D /* DTPhotoBrowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5DB17169D080020995D /* DTPhotoBrowerViewController.m */; };
+		55EFE5DE17169D080020995D /* DTPhotoBrowerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5DC17169D080020995D /* DTPhotoBrowerViewController.xib */; };
+		55EFE5E117169D300020995D /* DTPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5E017169D2F0020995D /* DTPhotoViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +97,11 @@
 		55EFE5D4171693B40020995D /* DTPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoViewController.m; sourceTree = "<group>"; };
 		55EFE5D5171693B40020995D /* DTPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTPhotoViewController.xib; sourceTree = "<group>"; };
 		55EFE5D91716970D0020995D /* DTAblumMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAblumMode.h; sourceTree = "<group>"; };
+		55EFE5DA17169D070020995D /* DTPhotoBrowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowerViewController.h; sourceTree = "<group>"; };
+		55EFE5DB17169D080020995D /* DTPhotoBrowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowerViewController.m; sourceTree = "<group>"; };
+		55EFE5DC17169D080020995D /* DTPhotoBrowerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTPhotoBrowerViewController.xib; sourceTree = "<group>"; };
+		55EFE5DF17169D2F0020995D /* DTPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoViewCell.h; sourceTree = "<group>"; };
+		55EFE5E017169D2F0020995D /* DTPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +189,11 @@
 				55EFE5D3171693B30020995D /* DTPhotoViewController.h */,
 				55EFE5D4171693B40020995D /* DTPhotoViewController.m */,
 				55EFE5D5171693B40020995D /* DTPhotoViewController.xib */,
+				55EFE5DF17169D2F0020995D /* DTPhotoViewCell.h */,
+				55EFE5E017169D2F0020995D /* DTPhotoViewCell.m */,
+				55EFE5DA17169D070020995D /* DTPhotoBrowerViewController.h */,
+				55EFE5DB17169D080020995D /* DTPhotoBrowerViewController.m */,
+				55EFE5DC17169D080020995D /* DTPhotoBrowerViewController.xib */,
 				55EFE5C817167DC50020995D /* images */,
 			);
 			path = DTPhotoBrower;
@@ -289,6 +302,7 @@
 				55EFE5D11716899B0020995D /* EmtyPhotoBlackStyle.png in Resources */,
 				55EFE5D21716899B0020995D /* EmtyPhotoNormalStyle.png in Resources */,
 				55EFE5D7171693B40020995D /* DTPhotoViewController.xib in Resources */,
+				55EFE5DE17169D080020995D /* DTPhotoBrowerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +329,8 @@
 				55EFE5C2171645400020995D /* UIWebView+WebView.m in Sources */,
 				55EFE5C7171660D60020995D /* DTTableViewCell.m in Sources */,
 				55EFE5D6171693B40020995D /* DTPhotoViewController.m in Sources */,
+				55EFE5DD17169D080020995D /* DTPhotoBrowerViewController.m in Sources */,
+				55EFE5E117169D300020995D /* DTPhotoViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
