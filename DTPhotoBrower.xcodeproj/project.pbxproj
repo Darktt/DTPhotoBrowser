@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55EFE5701716438C0020995D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EFE56F1716438C0020995D /* UIKit.framework */; };
+		55EFE5721716438C0020995D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EFE5711716438C0020995D /* Foundation.framework */; };
+		55EFE5741716438C0020995D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EFE5731716438C0020995D /* CoreGraphics.framework */; };
+		55EFE57A1716438C0020995D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5781716438C0020995D /* InfoPlist.strings */; };
+		55EFE57C1716438C0020995D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE57B1716438C0020995D /* main.m */; };
+		55EFE5801716438C0020995D /* DTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE57F1716438C0020995D /* DTAppDelegate.m */; };
+		55EFE5821716438C0020995D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5811716438C0020995D /* Default.png */; };
+		55EFE5841716438C0020995D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5831716438C0020995D /* Default@2x.png */; };
+		55EFE5861716438C0020995D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5851716438C0020995D /* Default-568h@2x.png */; };
+		55EFE5891716438C0020995D /* DTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5881716438C0020995D /* DTViewController.m */; };
+		55EFE58C1716438C0020995D /* DTViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE58A1716438C0020995D /* DTViewController_iPhone.xib */; };
+		55EFE58F1716438C0020995D /* DTViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE58D1716438C0020995D /* DTViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		55EFE56C1716438C0020995D /* DTPhotoBrower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTPhotoBrower.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55EFE56F1716438C0020995D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		55EFE5711716438C0020995D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		55EFE5731716438C0020995D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		55EFE5771716438C0020995D /* DTPhotoBrower-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DTPhotoBrower-Info.plist"; sourceTree = "<group>"; };
+		55EFE5791716438C0020995D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55EFE57B1716438C0020995D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55EFE57D1716438C0020995D /* DTPhotoBrower-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DTPhotoBrower-Prefix.pch"; sourceTree = "<group>"; };
+		55EFE57E1716438C0020995D /* DTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTAppDelegate.h; sourceTree = "<group>"; };
+		55EFE57F1716438C0020995D /* DTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTAppDelegate.m; sourceTree = "<group>"; };
+		55EFE5811716438C0020995D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		55EFE5831716438C0020995D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		55EFE5851716438C0020995D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		55EFE5871716438C0020995D /* DTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTViewController.h; sourceTree = "<group>"; };
+		55EFE5881716438C0020995D /* DTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTViewController.m; sourceTree = "<group>"; };
+		55EFE58B1716438C0020995D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DTViewController_iPhone.xib; sourceTree = "<group>"; };
+		55EFE58E1716438C0020995D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DTViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		55EFE5691716438C0020995D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EFE5701716438C0020995D /* UIKit.framework in Frameworks */,
+				55EFE5721716438C0020995D /* Foundation.framework in Frameworks */,
+				55EFE5741716438C0020995D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		55EFE5631716438C0020995D = {
+			isa = PBXGroup;
+			children = (
+				55EFE5751716438C0020995D /* DTPhotoBrower */,
+				55EFE56E1716438C0020995D /* Frameworks */,
+				55EFE56D1716438C0020995D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		55EFE56D1716438C0020995D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55EFE56C1716438C0020995D /* DTPhotoBrower.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55EFE56E1716438C0020995D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55EFE56F1716438C0020995D /* UIKit.framework */,
+				55EFE5711716438C0020995D /* Foundation.framework */,
+				55EFE5731716438C0020995D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55EFE5751716438C0020995D /* DTPhotoBrower */ = {
+			isa = PBXGroup;
+			children = (
+				55EFE57E1716438C0020995D /* DTAppDelegate.h */,
+				55EFE57F1716438C0020995D /* DTAppDelegate.m */,
+				55EFE5871716438C0020995D /* DTViewController.h */,
+				55EFE5881716438C0020995D /* DTViewController.m */,
+				55EFE58A1716438C0020995D /* DTViewController_iPhone.xib */,
+				55EFE58D1716438C0020995D /* DTViewController_iPad.xib */,
+				55EFE5761716438C0020995D /* Supporting Files */,
+			);
+			path = DTPhotoBrower;
+			sourceTree = "<group>";
+		};
+		55EFE5761716438C0020995D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55EFE5771716438C0020995D /* DTPhotoBrower-Info.plist */,
+				55EFE5781716438C0020995D /* InfoPlist.strings */,
+				55EFE57B1716438C0020995D /* main.m */,
+				55EFE57D1716438C0020995D /* DTPhotoBrower-Prefix.pch */,
+				55EFE5811716438C0020995D /* Default.png */,
+				55EFE5831716438C0020995D /* Default@2x.png */,
+				55EFE5851716438C0020995D /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		55EFE56B1716438C0020995D /* DTPhotoBrower */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55EFE5921716438C0020995D /* Build configuration list for PBXNativeTarget "DTPhotoBrower" */;
+			buildPhases = (
+				55EFE5681716438C0020995D /* Sources */,
+				55EFE5691716438C0020995D /* Frameworks */,
+				55EFE56A1716438C0020995D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DTPhotoBrower;
+			productName = DTPhotoBrower;
+			productReference = 55EFE56C1716438C0020995D /* DTPhotoBrower.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		55EFE5641716438C0020995D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DT;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Darktt;
+			};
+			buildConfigurationList = 55EFE5671716438C0020995D /* Build configuration list for PBXProject "DTPhotoBrower" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 55EFE5631716438C0020995D;
+			productRefGroup = 55EFE56D1716438C0020995D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				55EFE56B1716438C0020995D /* DTPhotoBrower */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55EFE56A1716438C0020995D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EFE57A1716438C0020995D /* InfoPlist.strings in Resources */,
+				55EFE5821716438C0020995D /* Default.png in Resources */,
+				55EFE5841716438C0020995D /* Default@2x.png in Resources */,
+				55EFE5861716438C0020995D /* Default-568h@2x.png in Resources */,
+				55EFE58C1716438C0020995D /* DTViewController_iPhone.xib in Resources */,
+				55EFE58F1716438C0020995D /* DTViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		55EFE5681716438C0020995D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EFE57C1716438C0020995D /* main.m in Sources */,
+				55EFE5801716438C0020995D /* DTAppDelegate.m in Sources */,
+				55EFE5891716438C0020995D /* DTViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		55EFE5781716438C0020995D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55EFE5791716438C0020995D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55EFE58A1716438C0020995D /* DTViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55EFE58B1716438C0020995D /* en */,
+			);
+			name = DTViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		55EFE58D1716438C0020995D /* DTViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55EFE58E1716438C0020995D /* en */,
+			);
+			name = DTViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		55EFE5901716438C0020995D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		55EFE5911716438C0020995D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		55EFE5931716438C0020995D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DTPhotoBrower/DTPhotoBrower-Prefix.pch";
+				INFOPLIST_FILE = "DTPhotoBrower/DTPhotoBrower-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		55EFE5941716438C0020995D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DTPhotoBrower/DTPhotoBrower-Prefix.pch";
+				INFOPLIST_FILE = "DTPhotoBrower/DTPhotoBrower-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55EFE5671716438C0020995D /* Build configuration list for PBXProject "DTPhotoBrower" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55EFE5901716438C0020995D /* Debug */,
+				55EFE5911716438C0020995D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55EFE5921716438C0020995D /* Build configuration list for PBXNativeTarget "DTPhotoBrower" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55EFE5931716438C0020995D /* Debug */,
+				55EFE5941716438C0020995D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 55EFE5641716438C0020995D /* Project object */;
+}
