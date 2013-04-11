@@ -1,5 +1,5 @@
 //
-//  DTViewController.h
+//  DTPhotoViewController.h
 //  DTPhotoBrower
 //
 //  Created by Darktt on 13/4/11.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DTViewController : UIViewController
-
-- (IBAction)openPhotoBrower:(id)sender;
+@interface DTPhotoViewController : UIViewController
 
 @end

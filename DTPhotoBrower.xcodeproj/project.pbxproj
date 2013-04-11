@@ -19,6 +19,26 @@
 		55EFE5891716438C0020995D /* DTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5881716438C0020995D /* DTViewController.m */; };
 		55EFE58C1716438C0020995D /* DTViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE58A1716438C0020995D /* DTViewController_iPhone.xib */; };
 		55EFE58F1716438C0020995D /* DTViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE58D1716438C0020995D /* DTViewController_iPad.xib */; };
+		55EFE59F171644B00020995D /* DTAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE59D171644B00020995D /* DTAlbumViewController.m */; };
+		55EFE5A0171644B00020995D /* DTAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE59E171644B00020995D /* DTAlbumViewController.xib */; };
+		55EFE5A2171644F20020995D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EFE5A1171644F20020995D /* AssetsLibrary.framework */; };
+		55EFE5B9171645400020995D /* NSArray+AroundArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5A61716453F0020995D /* NSArray+AroundArray.m */; };
+		55EFE5BA171645400020995D /* NSString+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5A81716453F0020995D /* NSString+String.m */; };
+		55EFE5BB171645400020995D /* UIColor+Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5AA1716453F0020995D /* UIColor+Colors.m */; };
+		55EFE5BC171645400020995D /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5AC1716453F0020995D /* UIImage+Image.m */; };
+		55EFE5BD171645400020995D /* UIImage+ResizeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5AE1716453F0020995D /* UIImage+ResizeImage.m */; };
+		55EFE5BE171645400020995D /* UINavigationController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5B0171645400020995D /* UINavigationController+Navigation.m */; };
+		55EFE5BF171645400020995D /* UIScreen+WinSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5B2171645400020995D /* UIScreen+WinSize.m */; };
+		55EFE5C0171645400020995D /* UITabBarController+TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5B4171645400020995D /* UITabBarController+TabBar.m */; };
+		55EFE5C1171645400020995D /* UITableView+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5B6171645400020995D /* UITableView+TableView.m */; };
+		55EFE5C2171645400020995D /* UIWebView+WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5B8171645400020995D /* UIWebView+WebView.m */; };
+		55EFE5C7171660D60020995D /* DTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5C6171660D60020995D /* DTTableViewCell.m */; };
+		55EFE5CD17167E320020995D /* Disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5CB17167E320020995D /* Disclosure.png */; };
+		55EFE5CE17167E320020995D /* Disclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5CC17167E320020995D /* Disclosure@2x.png */; };
+		55EFE5D11716899B0020995D /* EmtyPhotoBlackStyle.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5CF1716899B0020995D /* EmtyPhotoBlackStyle.png */; };
+		55EFE5D21716899B0020995D /* EmtyPhotoNormalStyle.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5D01716899B0020995D /* EmtyPhotoNormalStyle.png */; };
+		55EFE5D6171693B40020995D /* DTPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFE5D4171693B40020995D /* DTPhotoViewController.m */; };
+		55EFE5D7171693B40020995D /* DTPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EFE5D5171693B40020995D /* DTPhotoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +59,40 @@
 		55EFE5881716438C0020995D /* DTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTViewController.m; sourceTree = "<group>"; };
 		55EFE58B1716438C0020995D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DTViewController_iPhone.xib; sourceTree = "<group>"; };
 		55EFE58E1716438C0020995D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DTViewController_iPad.xib; sourceTree = "<group>"; };
+		55EFE59C171644B00020995D /* DTAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAlbumViewController.h; sourceTree = "<group>"; };
+		55EFE59D171644B00020995D /* DTAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAlbumViewController.m; sourceTree = "<group>"; };
+		55EFE59E171644B00020995D /* DTAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTAlbumViewController.xib; sourceTree = "<group>"; };
+		55EFE5A1171644F20020995D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		55EFE5A41716453F0020995D /* Catagorys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catagorys.h; sourceTree = "<group>"; };
+		55EFE5A51716453F0020995D /* NSArray+AroundArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AroundArray.h"; sourceTree = "<group>"; };
+		55EFE5A61716453F0020995D /* NSArray+AroundArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AroundArray.m"; sourceTree = "<group>"; };
+		55EFE5A71716453F0020995D /* NSString+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+String.h"; sourceTree = "<group>"; };
+		55EFE5A81716453F0020995D /* NSString+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+String.m"; sourceTree = "<group>"; };
+		55EFE5A91716453F0020995D /* UIColor+Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Colors.h"; sourceTree = "<group>"; };
+		55EFE5AA1716453F0020995D /* UIColor+Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Colors.m"; sourceTree = "<group>"; };
+		55EFE5AB1716453F0020995D /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Image.h"; sourceTree = "<group>"; };
+		55EFE5AC1716453F0020995D /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
+		55EFE5AD1716453F0020995D /* UIImage+ResizeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeImage.h"; sourceTree = "<group>"; };
+		55EFE5AE1716453F0020995D /* UIImage+ResizeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeImage.m"; sourceTree = "<group>"; };
+		55EFE5AF1716453F0020995D /* UINavigationController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Navigation.h"; sourceTree = "<group>"; };
+		55EFE5B0171645400020995D /* UINavigationController+Navigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Navigation.m"; sourceTree = "<group>"; };
+		55EFE5B1171645400020995D /* UIScreen+WinSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+WinSize.h"; sourceTree = "<group>"; };
+		55EFE5B2171645400020995D /* UIScreen+WinSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+WinSize.m"; sourceTree = "<group>"; };
+		55EFE5B3171645400020995D /* UITabBarController+TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+TabBar.h"; sourceTree = "<group>"; };
+		55EFE5B4171645400020995D /* UITabBarController+TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+TabBar.m"; sourceTree = "<group>"; };
+		55EFE5B5171645400020995D /* UITableView+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TableView.h"; sourceTree = "<group>"; };
+		55EFE5B6171645400020995D /* UITableView+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TableView.m"; sourceTree = "<group>"; };
+		55EFE5B7171645400020995D /* UIWebView+WebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+WebView.h"; sourceTree = "<group>"; };
+		55EFE5B8171645400020995D /* UIWebView+WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+WebView.m"; sourceTree = "<group>"; };
+		55EFE5C5171660D60020995D /* DTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTableViewCell.h; sourceTree = "<group>"; };
+		55EFE5C6171660D60020995D /* DTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTableViewCell.m; sourceTree = "<group>"; };
+		55EFE5CB17167E320020995D /* Disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Disclosure.png; sourceTree = "<group>"; };
+		55EFE5CC17167E320020995D /* Disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Disclosure@2x.png"; sourceTree = "<group>"; };
+		55EFE5CF1716899B0020995D /* EmtyPhotoBlackStyle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmtyPhotoBlackStyle.png; sourceTree = "<group>"; };
+		55EFE5D01716899B0020995D /* EmtyPhotoNormalStyle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmtyPhotoNormalStyle.png; sourceTree = "<group>"; };
+		55EFE5D3171693B30020995D /* DTPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoViewController.h; sourceTree = "<group>"; };
+		55EFE5D4171693B40020995D /* DTPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoViewController.m; sourceTree = "<group>"; };
+		55EFE5D5171693B40020995D /* DTPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTPhotoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55EFE5A2171644F20020995D /* AssetsLibrary.framework in Frameworks */,
 				55EFE5701716438C0020995D /* UIKit.framework in Frameworks */,
 				55EFE5721716438C0020995D /* Foundation.framework in Frameworks */,
 				55EFE5741716438C0020995D /* CoreGraphics.framework in Frameworks */,
@@ -58,6 +113,7 @@
 		55EFE5631716438C0020995D = {
 			isa = PBXGroup;
 			children = (
+				55EFE5A1171644F20020995D /* AssetsLibrary.framework */,
 				55EFE5751716438C0020995D /* DTPhotoBrower */,
 				55EFE56E1716438C0020995D /* Frameworks */,
 				55EFE56D1716438C0020995D /* Products */,
@@ -85,12 +141,14 @@
 		55EFE5751716438C0020995D /* DTPhotoBrower */ = {
 			isa = PBXGroup;
 			children = (
+				55EFE5A31716453F0020995D /* Catagorys */,
 				55EFE57E1716438C0020995D /* DTAppDelegate.h */,
 				55EFE57F1716438C0020995D /* DTAppDelegate.m */,
 				55EFE5871716438C0020995D /* DTViewController.h */,
 				55EFE5881716438C0020995D /* DTViewController.m */,
 				55EFE58A1716438C0020995D /* DTViewController_iPhone.xib */,
 				55EFE58D1716438C0020995D /* DTViewController_iPad.xib */,
+				55EFE595171643BD0020995D /* DTPhotoBrower */,
 				55EFE5761716438C0020995D /* Supporting Files */,
 			);
 			path = DTPhotoBrower;
@@ -108,6 +166,61 @@
 				55EFE5851716438C0020995D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55EFE595171643BD0020995D /* DTPhotoBrower */ = {
+			isa = PBXGroup;
+			children = (
+				55EFE59C171644B00020995D /* DTAlbumViewController.h */,
+				55EFE59D171644B00020995D /* DTAlbumViewController.m */,
+				55EFE59E171644B00020995D /* DTAlbumViewController.xib */,
+				55EFE5C5171660D60020995D /* DTTableViewCell.h */,
+				55EFE5C6171660D60020995D /* DTTableViewCell.m */,
+				55EFE5D3171693B30020995D /* DTPhotoViewController.h */,
+				55EFE5D4171693B40020995D /* DTPhotoViewController.m */,
+				55EFE5D5171693B40020995D /* DTPhotoViewController.xib */,
+				55EFE5C817167DC50020995D /* images */,
+			);
+			path = DTPhotoBrower;
+			sourceTree = "<group>";
+		};
+		55EFE5A31716453F0020995D /* Catagorys */ = {
+			isa = PBXGroup;
+			children = (
+				55EFE5A41716453F0020995D /* Catagorys.h */,
+				55EFE5A51716453F0020995D /* NSArray+AroundArray.h */,
+				55EFE5A61716453F0020995D /* NSArray+AroundArray.m */,
+				55EFE5A71716453F0020995D /* NSString+String.h */,
+				55EFE5A81716453F0020995D /* NSString+String.m */,
+				55EFE5A91716453F0020995D /* UIColor+Colors.h */,
+				55EFE5AA1716453F0020995D /* UIColor+Colors.m */,
+				55EFE5AB1716453F0020995D /* UIImage+Image.h */,
+				55EFE5AC1716453F0020995D /* UIImage+Image.m */,
+				55EFE5AD1716453F0020995D /* UIImage+ResizeImage.h */,
+				55EFE5AE1716453F0020995D /* UIImage+ResizeImage.m */,
+				55EFE5AF1716453F0020995D /* UINavigationController+Navigation.h */,
+				55EFE5B0171645400020995D /* UINavigationController+Navigation.m */,
+				55EFE5B1171645400020995D /* UIScreen+WinSize.h */,
+				55EFE5B2171645400020995D /* UIScreen+WinSize.m */,
+				55EFE5B3171645400020995D /* UITabBarController+TabBar.h */,
+				55EFE5B4171645400020995D /* UITabBarController+TabBar.m */,
+				55EFE5B5171645400020995D /* UITableView+TableView.h */,
+				55EFE5B6171645400020995D /* UITableView+TableView.m */,
+				55EFE5B7171645400020995D /* UIWebView+WebView.h */,
+				55EFE5B8171645400020995D /* UIWebView+WebView.m */,
+			);
+			path = Catagorys;
+			sourceTree = "<group>";
+		};
+		55EFE5C817167DC50020995D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				55EFE5CB17167E320020995D /* Disclosure.png */,
+				55EFE5CC17167E320020995D /* Disclosure@2x.png */,
+				55EFE5CF1716899B0020995D /* EmtyPhotoBlackStyle.png */,
+				55EFE5D01716899B0020995D /* EmtyPhotoNormalStyle.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +281,12 @@
 				55EFE5861716438C0020995D /* Default-568h@2x.png in Resources */,
 				55EFE58C1716438C0020995D /* DTViewController_iPhone.xib in Resources */,
 				55EFE58F1716438C0020995D /* DTViewController_iPad.xib in Resources */,
+				55EFE5A0171644B00020995D /* DTAlbumViewController.xib in Resources */,
+				55EFE5CD17167E320020995D /* Disclosure.png in Resources */,
+				55EFE5CE17167E320020995D /* Disclosure@2x.png in Resources */,
+				55EFE5D11716899B0020995D /* EmtyPhotoBlackStyle.png in Resources */,
+				55EFE5D21716899B0020995D /* EmtyPhotoNormalStyle.png in Resources */,
+				55EFE5D7171693B40020995D /* DTPhotoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +300,19 @@
 				55EFE57C1716438C0020995D /* main.m in Sources */,
 				55EFE5801716438C0020995D /* DTAppDelegate.m in Sources */,
 				55EFE5891716438C0020995D /* DTViewController.m in Sources */,
+				55EFE59F171644B00020995D /* DTAlbumViewController.m in Sources */,
+				55EFE5B9171645400020995D /* NSArray+AroundArray.m in Sources */,
+				55EFE5BA171645400020995D /* NSString+String.m in Sources */,
+				55EFE5BB171645400020995D /* UIColor+Colors.m in Sources */,
+				55EFE5BC171645400020995D /* UIImage+Image.m in Sources */,
+				55EFE5BD171645400020995D /* UIImage+ResizeImage.m in Sources */,
+				55EFE5BE171645400020995D /* UINavigationController+Navigation.m in Sources */,
+				55EFE5BF171645400020995D /* UIScreen+WinSize.m in Sources */,
+				55EFE5C0171645400020995D /* UITabBarController+TabBar.m in Sources */,
+				55EFE5C1171645400020995D /* UITableView+TableView.m in Sources */,
+				55EFE5C2171645400020995D /* UIWebView+WebView.m in Sources */,
+				55EFE5C7171660D60020995D /* DTTableViewCell.m in Sources */,
+				55EFE5D6171693B40020995D /* DTPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
