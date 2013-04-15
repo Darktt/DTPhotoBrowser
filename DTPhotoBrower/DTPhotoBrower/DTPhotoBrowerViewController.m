@@ -114,6 +114,7 @@
 {
     UIImageView *imageView = (UIImageView *)[self.view viewWithTag:kImageViewTag];
     UIImage *photo = [UIImage imageWithCGImage:cgImageRef scale:1 orientation:orientation];
+//    UIImage *photo = [UIImage imageWithCGImage:cgImageRef];
     
     CGRect imageViewFrame = imageView.frame;
     imageViewFrame.size = photo.size;

@@ -120,6 +120,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self setTitle:@"Photo Brower"];
+    
     if (currentMode == DTAlbumModeCopy) {
         
         // Reload album infomation
@@ -227,7 +229,7 @@
     dispatch_release(createAlbumQueue);
 }
 
-#pragma mark - BarButtonItem Method
+#pragma mark - UIBarButtonItem Action Method
 
 - (IBAction)askNewAlbumName:(id)sender
 {
@@ -314,7 +316,10 @@
     ALAssetsGroup *group = [_albumData objectForKey:kAlassetsGroupKey];
 //    NSLog(@"%@, %d", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]);
     
+    [self setTitle:@"Back"];
+    
     DTPhotoViewController *photoView = [DTPhotoViewController photoViewWithAssetsGroup:group mode:currentMode];
+    
     [self.navigationController pushViewController:photoView animated:YES];
 }
 

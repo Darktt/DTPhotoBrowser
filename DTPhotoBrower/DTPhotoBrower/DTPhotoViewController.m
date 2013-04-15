@@ -21,6 +21,9 @@
 // Get video assets onlt
 //#define kGetAlassetType [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]
 
+#define kCopyBtnTitle NSLocalizedString(@"Copy Here", @"Copy_Here_Button")
+#define kToolBarTag 99
+
 @interface DTPhotoViewController () <UITableViewDataSource, UITableViewDelegate, DTPhotoViewCellDelegate>
 {
     DTAlbumMode currentMode;
@@ -75,7 +78,48 @@
     
     [self setView:tableView];
     
+    if (currentMode == DTAlbumModeCopy) {
+        CGRect toolBarFrame = CGRectZero;
+        toolBarFrame.size = [[UIScreen mainScreen] winSize];
+        toolBarFrame.origin.y = toolBarFrame.size.height - 44;
+        toolBarFrame.size.height = 44;
+        
+        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:toolBarFrame];
+        [toolBar setBarStyle:UIBarStyleBlackTranslucent];
+        [toolBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
+        [toolBar setTag:kToolBarTag];
+        
+        UIBarButtonItem *copyBtn = [[UIBarButtonItem alloc] initWithTitle:kCopyBtnTitle
+                                                                    style:UIBarButtonItemStyleBordered
+                                                                   target:self
+                                                                   action:@selector(copyHere:)];
+        
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                       target:nil
+                                                                                       action:nil];
+        
+        [toolBar setItems:@[flexibleSpace, copyBtn, flexibleSpace]];
+        [copyBtn release];
+        [flexibleSpace release];
+        
+        [self.navigationController.view addSubview:toolBar];
+        [toolBar release];
+    }
+    
     [self getPhotoInfomation];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    NSArray *subViews = self.navigationController.view.subviews;
+    
+    for (id view in subViews) {
+        if ([view isKindOfClass:[UIToolbar class]]) {
+            [view removeFromSuperview];
+        }
+    }
 }
 
 - (void)dealloc
@@ -127,6 +171,13 @@
     };
     
     [_group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:groupEnumerationBlock];
+}
+
+#pragma mark - UIBarButtonItem Action Method
+
+- (IBAction)copyHere:(id)sender
+{
+    NSLog(@"Copy Here Method");
 }
 
 #pragma mark - UITableViewDataSource Methods

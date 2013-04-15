@@ -118,6 +118,8 @@
     
     _photos = [photos retain];
     
+    [self setDefaultViewForCopyMode:NO];
+    
     return self;
 }
 
@@ -127,6 +129,8 @@
     if (self == nil) return nil;
     
     _photos = [photos retain];
+    
+    [self setDefaultViewForCopyMode:YES];
     
     return self;
 }
@@ -161,21 +165,30 @@
     SEL tapGestureMethod = @selector(tapPhotoOfGesture:);
     
     for (NSInteger i = 1; i <= 4; i++) {
-        DTPhoto *imageView = [DTPhoto new];
-        [imageView setUserInteractionEnabled:YES];
-        [imageView setTag:i];
-        
         if (!copyMode) {
+            DTPhoto *imageView = [DTPhoto new];
+            [imageView setUserInteractionEnabled:YES];
+            [imageView setTag:i];
+            
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:tapGestureMethod];
             
             [imageView setGestureRecognizers:@[tapGesture]];
             [tapGesture release];
-        }
-        
-        [self addSubview:imageView];
-        
-        [_imageViews addObject:imageView];
-        [imageView release];
+            
+            [self addSubview:imageView];
+            
+            [_imageViews addObject:imageView];
+            [imageView release];
+        } else {
+            UIImageView *imageView = [UIImageView new];
+            [imageView setUserInteractionEnabled:YES];
+            [imageView setTag:i];
+            
+            [self addSubview:imageView];
+            
+            [_imageViews addObject:imageView];
+            [imageView release];
+        }        
     }
     
     imageViews = [_imageViews retain];
