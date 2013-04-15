@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DTAblumMode.h"
+#import "DTAlbumMode.h"
 
 typedef enum {
     DTAlbumViewStyleTable = 1,

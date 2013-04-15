@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, DTTableViewCellStyle)
 @interface DTTableViewCell : UITableViewCell
 
 @property (assign, readonly) DTTableViewCellStyle cellStyle;
+@property (nonatomic, retain) UIImage *image NS_AVAILABLE_IOS(2_0);
 
 + (id)tableCellWithStyle:(DTTableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (id)initWithStyle:(DTTableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;

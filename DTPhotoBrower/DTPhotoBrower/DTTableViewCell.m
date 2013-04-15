@@ -99,6 +99,25 @@
     }
 }
 
+- (void)setImage:(UIImage *)image
+{
+    if (image != nil) {
+        [self.imageView setImage:image];
+        
+        return;
+    }
+    
+    if (cellStyle == DTTableViewCellStyleBlack)
+        [self.imageView setImage:[UIImage imageNamed:@"EmtyPhotoBlackStyle.png"]];
+    else
+        [self.imageView setImage:[UIImage imageNamed:@"EmtyPhotoNormalStyle.png"]];
+}
+
+- (UIImage *)image
+{
+    return self.imageView.image;
+}
+
 #pragma mark - Getter Method
 
 - (DTTableViewCellStyle)cellStyle

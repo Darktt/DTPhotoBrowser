@@ -12,14 +12,37 @@
 #import "DTTableViewCell.h"
 #import "DTPhotoViewController.h"
 
+// Get all assets
+#define kALAssetsFilter [ALAssetsFilter allAssets]
+// Get photo assets only
+//#define kALAssetsFilter [ALAssetsFilter allPhotos]
+// Get Video assets only
+//#define kALAssetsFilter [ALAssetsFilter allVideos]
+
 #define kAlertTitle @"Emty Album"
 #define kAlertMessage @"Your Album is emty."
+#define kAlertCancelBtn NSLocalizedString(@"Cancel", @"Alert_View_Cancel_Button")
+#define kAlertOKBtn NSLocalizedString(@"OK", @"Alert_OK_Cancel_Button")
 
-@interface DTAlbumViewController () <UITableViewDataSource, UITableViewDelegate>
+#define kCreateAlbumAlertTag 50
+#define kCreateAlbumTitle NSLocalizedString(@"Create album", @"Create_Album_Title")
+#define kCreateAlbumMessage NSLocalizedString(@"", @"Create_Album_Message")
+
+#define kTableViewTag 1
+
+#define kAlbumNameKey @"Name"
+#define kAlassetsGroupKey @"Group" 
+#define kLastPhotoKey @"lastPhoto"
+
+#define kCellHeight 65.0f
+
+@interface DTAlbumViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 {
-    NSArray *photoGroup;
-    NSArray *lastPhotoOfGroup;
-    NSArray *alassetsGroups;
+    NSArray *albums;
+    
+    DTAlbumMode currentMode;
+    
+    ALAssetsLibrary *libary;
 }
 
 @end
@@ -28,20 +51,7 @@
 
 + (id)albumViewWithPhotoMode:(DTAlbumMode)mode
 {
-    DTAlbumViewController *albumViewController = nil;
-    
-    switch (mode) {
-        case DTAlbumModeNormal:
-            albumViewController = [[[DTAlbumViewController alloc] initWithPhotoNormalMode] autorelease];
-            break;
-            
-        case DTAlbumModeCopy:
-            albumViewController = [[[DTAlbumViewController alloc] initWithPhotoCopyMode] autorelease];
-            break;
-            
-        default:
-            break;
-    }
+    DTAlbumViewController *albumViewController = [[[DTAlbumViewController alloc] initWithPhotoMode:mode] autorelease];
     
     return albumViewController;
 }
@@ -53,23 +63,22 @@
     return photoViewController;
 }
 
-- (id)initWithPhotoCopyMode
+- (id)initWithPhotoMode:(DTAlbumMode)mode
 {
     self = [super initWithNibName:@"DTAlbumViewController" bundle:nil];
     
     if (self == nil) return nil;
     
-    [self setDefaultArray];
-    return self;
-}
-
-- (id)initWithPhotoNormalMode
-{
-    self = [super initWithNibName:@"DTAlbumViewController" bundle:nil];
+    currentMode = mode;
+    [self setDefaultInfomation];
     
-    if (self == nil) return nil;
+    if (currentMode == DTAlbumModeCopy) {
+        UIBarButtonItem *addAlbum = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(askNewAlbumName:)];
+        
+        [self.navigationItem setRightBarButtonItem:addAlbum];
+        [addAlbum release];
+    }
     
-    [self setDefaultArray];
     return self;
 }
 
@@ -79,15 +88,15 @@
     
     if (self == nil) return nil;
     
-    [self setDefaultArray];
+    currentMode = mode;
+    [self setDefaultInfomation];
+    
     return self;
 }
 
-- (void)setDefaultArray
+- (void)setDefaultInfomation
 {
-    photoGroup = [[NSArray alloc] initWithObjects:@"", nil];
-    lastPhotoOfGroup = [NSArray array];
-    alassetsGroups = [NSArray array];
+    albums = [NSArray new];
 }
 
 - (void)viewDidLoad
@@ -102,58 +111,27 @@
     
     CGRect frame = self.view.bounds;
     UITableView *tableView = [UITableView tableViewWithFrame:frame style:UITableViewStylePlain forTager:self];
+    [tableView setTag:kTableViewTag];
     
     [self setView:tableView];
     
-    NSMutableArray *_photoGroup = [NSMutableArray array];
-    NSMutableArray *_lastPhotoOfGroup = [NSMutableArray array];
-    NSMutableArray *_alassetsGroups = [NSMutableArray array];
-    
-    ALAssetsGroupEnumerationResultsBlock groupEnumerationBlock = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
-        if (result) {
-            UIImage *photo = [UIImage imageWithCGImage:[result thumbnail] scale:1 orientation:UIImageOrientationUp];
-            [_lastPhotoOfGroup addObject:photo];
-        } else {
-            [lastPhotoOfGroup release];
-            lastPhotoOfGroup = [_lastPhotoOfGroup copy];
-        }
-    };
-    
-    ALAssetsLibraryGroupsEnumerationResultsBlock libraryEnumerationBlock = ^(ALAssetsGroup *group, BOOL *stop) {
-        if(group != nil) {
-            
-            NSString *groupName = [NSString stringWithFormat:@"%@ (%d)", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]];
-            
-//            NSLog(@"Album Name:%@", groupName);
-            
-            [_alassetsGroups addObject:group];
-            [_photoGroup addObject:groupName];
-            
-            if ([group numberOfAssets] != 0) {
-                [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:[group numberOfAssets] - 1] options:0 usingBlock:groupEnumerationBlock];
-            }
-            
-        } else {
-            [photoGroup release];
-            photoGroup = [_photoGroup copy];
-            
-            [alassetsGroups release];
-            alassetsGroups = [_alassetsGroups copy];
-            
-            [tableView reloadData];
-        }
-    };
-    
-    ALAssetsLibrary *libary = [ALAssetsLibrary new];
-    [libary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:libraryEnumerationBlock failureBlock:^(NSError *error){
-        NSLog(@"%@", error);
-    }];
+    [self getAlbumInfomation];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (currentMode == DTAlbumModeCopy) {
+        
+        // Reload album infomation
+        [self getAlbumInfomation];
+    }
 }
 
 - (void)dealloc
 {
-    [photoGroup release];
-    [lastPhotoOfGroup release];
+    [albums release];
+    
+    [libary release];
     [super dealloc];
 }
 
@@ -161,6 +139,108 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - AlassetsLibrary Methods
+
+#pragma mark Get Album Infomation
+
+- (void)getAlbumInfomation
+{
+    UITableView *tableView = (UITableView *)[self.view viewWithTag:kTableViewTag];
+    
+    NSMutableArray *_albums = [NSMutableArray array];
+    NSMutableDictionary *_albumData = [NSMutableDictionary dictionary];
+    
+    ALAssetsGroupEnumerationResultsBlock groupEnumerationBlock = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
+        if (result) {
+            UIImage *photo = [UIImage imageWithCGImage:[result thumbnail] scale:1 orientation:UIImageOrientationUp];
+            [_albumData setObject:photo forKey:kLastPhotoKey];
+        } else {
+            [_albums addObject:[_albumData copy]];
+            [_albumData removeAllObjects];
+        }
+    };
+    
+    ALAssetsLibraryGroupsEnumerationResultsBlock libraryEnumerationBlock = ^(ALAssetsGroup *group, BOOL *stop) {
+        if(group != nil) {
+            [group setAssetsFilter:kALAssetsFilter];
+            
+            NSString *groupName = [NSString stringWithFormat:@"%@ (%d)", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]];
+            
+//            NSLog(@"Album Name:%@", groupName);
+            
+            [_albumData setObject:groupName forKey:kAlbumNameKey];
+            [_albumData setObject:group forKey:kAlassetsGroupKey];
+            
+            if ([group numberOfAssets] != 0) {
+                [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:[group numberOfAssets] - 1] options:NSEnumerationConcurrent usingBlock:groupEnumerationBlock];
+            } else {
+                [_albumData setObject:@"" forKey:kLastPhotoKey];
+                [_albums addObject:[_albumData copy]];
+                [_albumData removeAllObjects];
+            }
+            
+        } else {
+            [albums release];
+            albums = [_albums copy];
+            
+            [tableView reloadData];
+        }
+    };
+    
+    ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError *error){
+        NSLog(@"%@", error);
+    };
+    
+    libary = [ALAssetsLibrary new];
+    [libary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:libraryEnumerationBlock failureBlock:failureBlock];
+}
+
+#pragma mark Create New Album
+
+- (void)addNewAlbumWithAlbumName:(NSString *)albumName
+{
+    if (libary == nil) {
+        libary = [ALAssetsLibrary new];
+    }
+    
+    dispatch_queue_t createAlbumQueue = dispatch_queue_create("Create Album", NULL);
+    dispatch_async(createAlbumQueue, ^{
+        
+        ALAssetsLibraryGroupResultBlock resultBlock = ^(ALAssetsGroup *group){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self getAlbumInfomation];
+            });
+            
+        };
+        
+        ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError *error){
+            NSLog(@"%@", error);
+        };
+        
+        [libary addAssetsGroupAlbumWithName:albumName resultBlock:resultBlock failureBlock:failureBlock];
+        
+    });
+    
+    dispatch_release(createAlbumQueue);
+}
+
+#pragma mark - BarButtonItem Method
+
+- (IBAction)askNewAlbumName:(id)sender
+{
+    UIAlertView *askAlbumName = [[UIAlertView alloc] initWithTitle:kCreateAlbumTitle
+                                                           message:kCreateAlbumMessage
+                                                          delegate:self
+                                                 cancelButtonTitle:kAlertCancelBtn
+                                                 otherButtonTitles:kAlertOKBtn, nil];
+    
+    [askAlbumName setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [askAlbumName setTag:kCreateAlbumAlertTag];
+    [askAlbumName show];
+    [askAlbumName release];
 }
 
 #pragma mark - Show Alert Methods
@@ -173,11 +253,24 @@
     [alert release];
 }
 
+#pragma mark - UIAlertViewDelegate Methods
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *buttonTitle = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if ([buttonTitle isEqualToString:kAlertOKBtn]) {
+        UITextField *albumName = [alertView textFieldAtIndex:0];
+        
+        [self addNewAlbumWithAlbumName:albumName.text];
+    }
+}
+
 #pragma mark - UITableViewDataSource Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return photoGroup.count;
+    return albums.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -192,20 +285,22 @@
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
-    [cell.textLabel setText:photoGroup[indexPath.row]];
+    NSDictionary *_albumData = [albums objectAtIndex:indexPath.row];
     
-    if (lastPhotoOfGroup.count != 0)
-        [cell.imageView setImage:lastPhotoOfGroup[indexPath.row]];
-    else {
-//        [self showEmtyPhotoAlert];
+    [cell.textLabel setText:[_albumData objectForKey:kAlbumNameKey]];
+    
+    if ([[_albumData objectForKey:kLastPhotoKey] isKindOfClass:[UIImage class]]) {
+        [cell setImage:[_albumData objectForKey:kLastPhotoKey]];
+    } else {
+        [cell setImage:nil];
     }
-    
+
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 65.0f;
+    return kCellHeight;
 }
 
 #pragma mark - UITableViewDelegate Method
@@ -214,10 +309,12 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    ALAssetsGroup *group = [alassetsGroups objectAtIndex:indexPath.row];
+    NSDictionary *_albumData = [albums objectAtIndex:indexPath.row];
+    
+    ALAssetsGroup *group = [_albumData objectForKey:kAlassetsGroupKey];
 //    NSLog(@"%@, %d", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]);
     
-    DTPhotoViewController *photoView = [DTPhotoViewController photoViewWithAssetsGroup:group mode:DTAlbumModeNormal];
+    DTPhotoViewController *photoView = [DTPhotoViewController photoViewWithAssetsGroup:group mode:currentMode];
     [self.navigationController pushViewController:photoView animated:YES];
 }
 

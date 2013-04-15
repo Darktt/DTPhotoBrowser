@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DTAblumMode.h"
+#import "DTAlbumMode.h"
 
 @class ALAssetsGroup;
 

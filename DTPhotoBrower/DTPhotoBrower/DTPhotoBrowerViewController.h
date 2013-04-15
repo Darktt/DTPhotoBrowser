@@ -10,4 +10,6 @@
 
 @interface DTPhotoBrowerViewController : UIViewController
 
++ (id)photoBrowerWithIndex:(NSUInteger)index forPhotosArray:(NSArray *)photos;
+
 @end
