@@ -22,7 +22,6 @@
 //#define kGetAlassetType [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]
 
 #define kCopyBtnTitle NSLocalizedString(@"Copy Here", @"Copy_Here_Button")
-#define kToolBarTag 99
 
 @interface DTPhotoViewController () <UITableViewDataSource, UITableViewDelegate, DTPhotoViewCellDelegate>
 {
@@ -66,10 +65,6 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     [self.navigationController.navigationBar setTranslucent:YES];
-    
-    NSString *title = [_group valueForProperty:ALAssetsGroupPropertyName];
-    
-    [self setTitle:title];
     [self setWantsFullScreenLayout:YES];
     
     UITableView *tableView = [UITableView tableViewWithFrame:self.view.bounds style:UITableViewStylePlain forTager:self];
@@ -87,7 +82,6 @@
         UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:toolBarFrame];
         [toolBar setBarStyle:UIBarStyleBlackTranslucent];
         [toolBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
-        [toolBar setTag:kToolBarTag];
         
         UIBarButtonItem *copyBtn = [[UIBarButtonItem alloc] initWithTitle:kCopyBtnTitle
                                                                     style:UIBarButtonItemStyleBordered
@@ -109,6 +103,15 @@
     [self getPhotoInfomation];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSString *title = [_group valueForProperty:ALAssetsGroupPropertyName];
+    
+    [self setTitle:title];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -120,6 +123,13 @@
             [view removeFromSuperview];
         }
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [self setTitle:kBackTitle];
 }
 
 - (void)dealloc

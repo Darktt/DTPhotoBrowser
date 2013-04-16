@@ -120,7 +120,7 @@
     imageViewFrame.size = photo.size;
     
     [imageView setImage:photo];
-//            [imageView setFrame:imageViewFrame];
+//    [imageView setFrame:imageViewFrame];
     [imageView setCenter:self.view.center];
 }
 

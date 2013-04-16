@@ -34,9 +34,8 @@
     self = [super init];
     if (self == nil) return nil;
     
-    tapView = [[UIView alloc] initWithFrame:self.frame];
+    tapView = [[UIView viewWithFrame:self.frame backgroundColor:[UIColor blackColor]] retain];
     [tapView setAlpha:0.5f];
-    [tapView setBackgroundColor:[UIColor blackColor]];
     [tapView setHidden:YES];
     
     [self addSubview:tapView];
@@ -58,13 +57,22 @@
     [super dealloc];
 }
 
+#pragma mark - Overwrite Method
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [tapView setHidden:!highlighted];
+}
+
 #pragma mark - Touches Methods
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (event.type != UIEventTypeTouches) return;
     
-    [tapView setHidden:NO];
+    if (tapView.hidden)
+        [tapView setHidden:NO];
+    
     [self bringSubviewToFront:tapView];
 }
 
@@ -164,31 +172,27 @@
     
     SEL tapGestureMethod = @selector(tapPhotoOfGesture:);
     
+    UIImageView *imageView = nil;
+    
     for (NSInteger i = 1; i <= 4; i++) {
         if (!copyMode) {
-            DTPhoto *imageView = [DTPhoto new];
+            imageView = [DTPhoto new];
             [imageView setUserInteractionEnabled:YES];
             [imageView setTag:i];
             
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:tapGestureMethod];
+            [tapGesture setNumberOfTapsRequired:1];
             
             [imageView setGestureRecognizers:@[tapGesture]];
             [tapGesture release];
-            
-            [self addSubview:imageView];
-            
-            [_imageViews addObject:imageView];
-            [imageView release];
         } else {
-            UIImageView *imageView = [UIImageView new];
-            [imageView setUserInteractionEnabled:YES];
-            [imageView setTag:i];
-            
-            [self addSubview:imageView];
-            
-            [_imageViews addObject:imageView];
-            [imageView release];
-        }        
+            imageView = [UIImageView new];
+        }
+        
+        [self addSubview:imageView];
+        
+        [_imageViews addObject:imageView];
+        [imageView release];
     }
     
     imageViews = [_imageViews retain];
@@ -255,9 +259,19 @@
     }
     
     UIImageView *photo = (UIImageView *)[sender view];
+    
+    [photo setHighlighted:YES];
+    
+    [self performSelector:@selector(unHighlightPhoto:) withObject:photo afterDelay:0.5f];
+    
     UIImage *tapImage = [photo image];
     
     [self.delegate photoViewCell:self tapPhotoForImage:tapImage];
+}
+
+- (void)unHighlightPhoto:(UIImageView *)photo
+{
+    [photo setHighlighted:NO];
 }
 
 @end

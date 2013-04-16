@@ -28,6 +28,8 @@
 #define kCreateAlbumTitle NSLocalizedString(@"Create album", @"Create_Album_Title")
 #define kCreateAlbumMessage NSLocalizedString(@"", @"Create_Album_Message")
 
+#define kCloseButtonTitle NSLocalizedString(@"Close", @"Close_Button_Title")
+
 #define kTableViewTag 1
 
 #define kAlbumNameKey @"Name"
@@ -106,8 +108,12 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     [self.navigationController.navigationBar setTranslucent:YES];
-    [self setTitle:@"Photo Brower"];
     [self setWantsFullScreenLayout:YES];
+    
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:kCloseButtonTitle style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
+    
+    [self.navigationItem setLeftBarButtonItem:backBtn];
+    [backBtn release];
     
     CGRect frame = self.view.bounds;
     UITableView *tableView = [UITableView tableViewWithFrame:frame style:UITableViewStylePlain forTager:self];
@@ -120,6 +126,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setTitle:@"Photo Brower"];
     
     if (currentMode == DTAlbumModeCopy) {
@@ -127,6 +134,12 @@
         // Reload album infomation
         [self getAlbumInfomation];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self setTitle:kBackTitle];
 }
 
 - (void)dealloc
@@ -152,15 +165,15 @@
     UITableView *tableView = (UITableView *)[self.view viewWithTag:kTableViewTag];
     
     NSMutableArray *_albums = [NSMutableArray array];
-    NSMutableDictionary *_albumData = [NSMutableDictionary dictionary];
+    NSMutableDictionary *albumData = [NSMutableDictionary dictionary];
     
     ALAssetsGroupEnumerationResultsBlock groupEnumerationBlock = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
         if (result) {
             UIImage *photo = [UIImage imageWithCGImage:[result thumbnail] scale:1 orientation:UIImageOrientationUp];
-            [_albumData setObject:photo forKey:kLastPhotoKey];
+            [albumData setObject:photo forKey:kLastPhotoKey];
         } else {
-            [_albums addObject:[_albumData copy]];
-            [_albumData removeAllObjects];
+            [_albums addObject:[albumData copy]];
+            [albumData removeAllObjects];
         }
     };
     
@@ -172,15 +185,15 @@
             
 //            NSLog(@"Album Name:%@", groupName);
             
-            [_albumData setObject:groupName forKey:kAlbumNameKey];
-            [_albumData setObject:group forKey:kAlassetsGroupKey];
+            [albumData setObject:groupName forKey:kAlbumNameKey];
+            [albumData setObject:group forKey:kAlassetsGroupKey];
             
             if ([group numberOfAssets] != 0) {
                 [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:[group numberOfAssets] - 1] options:NSEnumerationConcurrent usingBlock:groupEnumerationBlock];
             } else {
-                [_albumData setObject:@"" forKey:kLastPhotoKey];
-                [_albums addObject:[_albumData copy]];
-                [_albumData removeAllObjects];
+                [albumData setObject:@"" forKey:kLastPhotoKey];
+                [_albums addObject:[albumData copy]];
+                [albumData removeAllObjects];
             }
             
         } else {
@@ -223,7 +236,6 @@
         };
         
         [libary addAssetsGroupAlbumWithName:albumName resultBlock:resultBlock failureBlock:failureBlock];
-        
     });
     
     dispatch_release(createAlbumQueue);
@@ -243,6 +255,11 @@
     [askAlbumName setTag:kCreateAlbumAlertTag];
     [askAlbumName show];
     [askAlbumName release];
+}
+
+- (IBAction)close:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Show Alert Methods
@@ -315,8 +332,6 @@
     
     ALAssetsGroup *group = [_albumData objectForKey:kAlassetsGroupKey];
 //    NSLog(@"%@, %d", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]);
-    
-    [self setTitle:@"Back"];
     
     DTPhotoViewController *photoView = [DTPhotoViewController photoViewWithAssetsGroup:group mode:currentMode];
     
