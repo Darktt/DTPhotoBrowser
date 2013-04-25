@@ -68,6 +68,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesBegan:touches withEvent:event];
     if (event.type != UIEventTypeTouches) return;
     
     if (tapView.hidden)
@@ -78,6 +79,7 @@
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesCancelled:touches withEvent:event];
     if (event.type != UIEventTypeTouches) return;
     
     [tapView setHidden:YES];
@@ -85,6 +87,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesEnded:touches withEvent:event];
     if (event.type != UIEventTypeTouches) return;
     
     [tapView setHidden:YES];
