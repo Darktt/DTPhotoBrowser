@@ -79,9 +79,8 @@
         toolBarFrame.origin.y = toolBarFrame.size.height - 44;
         toolBarFrame.size.height = 44;
         
-        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:toolBarFrame];
-        [toolBar setBarStyle:UIBarStyleBlackTranslucent];
-        [toolBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
+        [self.navigationController setToolbarHidden:NO animated:YES];
+        [self.navigationController.toolbar setBarStyle:UIBarStyleBlackTranslucent];
         
         UIBarButtonItem *copyBtn = [[UIBarButtonItem alloc] initWithTitle:kCopyBtnTitle
                                                                     style:UIBarButtonItemStyleBordered
@@ -92,12 +91,9 @@
                                                                                        target:nil
                                                                                        action:nil];
         
-        [toolBar setItems:@[flexibleSpace, copyBtn, flexibleSpace]];
+        [self setToolbarItems:@[flexibleSpace, copyBtn, flexibleSpace]];
         [copyBtn release];
         [flexibleSpace release];
-        
-        [self.navigationController.view addSubview:toolBar];
-        [toolBar release];
     }
     
     [self getPhotoInfomation];
@@ -116,13 +112,7 @@
 {
     [super viewWillDisappear:animated];
     
-    NSArray *subViews = self.navigationController.view.subviews;
-    
-    for (id view in subViews) {
-        if ([view isKindOfClass:[UIToolbar class]]) {
-            [view removeFromSuperview];
-        }
-    }
+    [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

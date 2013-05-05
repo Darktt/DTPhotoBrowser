@@ -172,7 +172,7 @@
             UIImage *photo = [UIImage imageWithCGImage:[result thumbnail] scale:1 orientation:UIImageOrientationUp];
             [albumData setObject:photo forKey:kLastPhotoKey];
         } else {
-            [_albums addObject:[albumData copy]];
+            [_albums addObject:[[albumData copy] autorelease]];
             [albumData removeAllObjects];
         }
     };
@@ -192,7 +192,7 @@
                 [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:[group numberOfAssets] - 1] options:NSEnumerationConcurrent usingBlock:groupEnumerationBlock];
             } else {
                 [albumData setObject:@"" forKey:kLastPhotoKey];
-                [_albums addObject:[albumData copy]];
+                [_albums addObject:[[albumData copy] autorelease]];
                 [albumData removeAllObjects];
             }
             
