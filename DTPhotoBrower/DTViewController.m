@@ -8,7 +8,7 @@
 
 #import "DTViewController.h"
 #import "DTAlbumViewController.h"
-#import "Catagorys.h"
+#import "Categories.h"
 
 @interface DTViewController ()
 

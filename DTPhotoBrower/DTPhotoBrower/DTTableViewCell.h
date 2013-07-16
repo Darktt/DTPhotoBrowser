@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, DTTableViewCellStyle)
 
 @property (assign, readonly) DTTableViewCellStyle cellStyle;
 @property (nonatomic, retain) UIImage *image NS_AVAILABLE_IOS(2_0);
+@property (nonatomic, retain) UIColor *selectedBackgroundColor;
 
 + (id)tableCellWithStyle:(DTTableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (id)initWithStyle:(DTTableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;

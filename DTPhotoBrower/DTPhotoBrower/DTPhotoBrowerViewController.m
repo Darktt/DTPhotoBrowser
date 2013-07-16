@@ -32,7 +32,7 @@
 
 - (id)initWithIndex:(NSUInteger)index forPhotosArray:(NSArray *)photos
 {
-    self = [super initWithNibName:@"DTPhotoBrowerViewController" bundle:nil];
+    self = [super init];
     if (self == nil) return nil;
     
     currentIndex = index;
@@ -114,13 +114,11 @@
 {
     UIImageView *imageView = (UIImageView *)[self.view viewWithTag:kImageViewTag];
     UIImage *photo = [UIImage imageWithCGImage:cgImageRef scale:1 orientation:orientation];
-//    UIImage *photo = [UIImage imageWithCGImage:cgImageRef];
     
     CGRect imageViewFrame = imageView.frame;
     imageViewFrame.size = photo.size;
     
     [imageView setImage:photo];
-//    [imageView setFrame:imageViewFrame];
     [imageView setCenter:self.view.center];
 }
 

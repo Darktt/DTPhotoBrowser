@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DTAlbumMode.h"
+#import "DTThumbnailView.h"
 
 #define kCellForPhotoCount 4
 
@@ -27,16 +28,19 @@
 
 @protocol DTPhotoViewCellDelegate <NSObject>
 
-- (void)photoViewCell:(DTPhotoViewCell *)photoViewCell tapPhotoForImage:(UIImage *)image;
+//- (void)photoViewCell:(DTPhotoViewCell *)photoViewCell tapedPhotoForImage:(UIImage *)image;
+- (void)photoViewCell:(DTPhotoViewCell *)photoViewCell tapedPhotoForThumbnail:(NSDictionary *)thumbnail;
 
 @end
 
 @interface DTPhotoViewCell : UITableViewCell
 
-@property (nonatomic, retain) NSArray *photos;
+@property (nonatomic, retain) NSArray *thumbnails;
 @property (assign) id<DTPhotoViewCellDelegate> delegate;
 
-+ (id)photoViewCellWithPhotos:(NSArray *)photos reuseIdentifier:(NSString *)reuseIdentifier;
-+ (id)photoViewCellWithPhotosForCopyMode:(NSArray *)photos reuseIdentifier:(NSString *)reuseIdentifier;
++ (id)photoViewCellWithThumbnails:(NSArray *)thumbnails reuseIdentifier:(NSString *)reuseIdentifier;
++ (id)photoViewCellWithThumbnailsForCopyMode:(NSArray *)thumbnails reuseIdentifier:(NSString *)reuseIdentifier;
+
+- (void)setCheckMark:(BOOL)checked photoIndex:(NSUInteger)index;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "Catagorys.h"
 #import "DTAlbumViewController.h"
 #import "DTTableViewCell.h"
 #import "DTPhotoViewController.h"
@@ -67,7 +66,7 @@
 
 - (id)initWithPhotoMode:(DTAlbumMode)mode
 {
-    self = [super initWithNibName:@"DTAlbumViewController" bundle:nil];
+    self = [super init];
     
     if (self == nil) return nil;
     
@@ -86,7 +85,7 @@
 
 - (id)initWithPhotoStyle:(DTAlbumViewStyle)style mode:(DTAlbumMode)mode
 {
-    self = [super initWithNibName:@"DTAlbumViewController" bundle:nil];
+    self = [super init];
     
     if (self == nil) return nil;
     
@@ -115,11 +114,13 @@
     [self.navigationItem setLeftBarButtonItem:backBtn];
     [backBtn release];
     
-    CGRect frame = self.view.bounds;
-    UITableView *tableView = [UITableView tableViewWithFrame:frame style:UITableViewStylePlain forTager:self];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    [tableView setDataSource:self];
+    [tableView setDelegate:self];
     [tableView setTag:kTableViewTag];
     
     [self setView:tableView];
+    [tableView release];
     
     [self getAlbumInfomation];
 }
@@ -282,6 +283,7 @@
         UITextField *albumName = [alertView textFieldAtIndex:0];
         
         [self addNewAlbumWithAlbumName:albumName.text];
+//        [self addNewAlbumWithAlbumName:nil];
     }
 }
 

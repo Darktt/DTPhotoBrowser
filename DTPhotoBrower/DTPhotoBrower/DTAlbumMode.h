@@ -10,5 +10,6 @@
 
 typedef enum {
     DTAlbumModeNormal = 1,
-    DTAlbumModeCopy
+    DTAlbumModeCopy,
+    DTAlbumModeMove
 } DTAlbumMode;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Darktt. All rights reserved.
 //
 
-#import "Catagorys.h"
+#import "Categories.h"
 #import "DTTableViewCell.h"
 
 @interface DTTableViewCell ()
@@ -74,20 +74,26 @@
     [cellBackgroundView setOpaque:YES];
     [cellBackgroundView setBackgroundColor:[UIColor blackColor]];
     
+    UIView *selectBgView = [[UIView alloc] initWithFrame:self.bounds];
+    [selectBgView setOpaque:YES];
+    [selectBgView setBackgroundColor:[UIColor togoBoxGreenColor]];
+    
     [self setBackgroundView:cellBackgroundView];
+    [self setSelectedBackgroundView:selectBgView];
     [cellBackgroundView release];
+    [selectBgView release];
     
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     [self.textLabel setTextColor:[UIColor whiteColor]];
     
-    [self.imageView setImage:[UIImage imageNamed:@"EmtyPhotoBlackStyle.png"]];
+//    [self.imageView setImage:[UIImage imageNamed:@"EmtyPhotoBlackStyle.png"]];
 }
 
 #pragma mark - Over Write Defaule Method
 
 - (void)setAccessoryType:(UITableViewCellAccessoryType)accessoryType
 {
-    if (cellStyle == DTTableViewCellStyleBlack) {
+    if (cellStyle == DTTableViewCellStyleBlack && accessoryType == UITableViewCellAccessoryDisclosureIndicator) {
         [super setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         
         UIImageView *disclosure = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure.png"]];
@@ -96,6 +102,8 @@
         [disclosure release];
     } else {
         [super setAccessoryType:accessoryType];
+        
+        [self setAccessoryView:nil];
     }
 }
 
@@ -116,6 +124,20 @@
 - (UIImage *)image
 {
     return self.imageView.image;
+}
+
+- (void)setSelectedBackgroundColor:(UIColor *)selectedBackgroundColor
+{
+    UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
+    [selectedBackgroundView setBackgroundColor:selectedBackgroundColor];
+    
+    [self setSelectedBackgroundView:selectedBackgroundView];
+    [selectedBackgroundView release];
+}
+
+- (UIColor *)selectedBackgroundColor
+{
+    return self.selectedBackgroundView.backgroundColor;
 }
 
 #pragma mark - Getter Method
