@@ -89,7 +89,7 @@
     
     // Main View Setting
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    [tableView setDelegate:self];
+    [tableView setDataSource:self];
     [tableView setBackgroundColor:[UIColor blackColor]];
     [tableView setSeparatorColor:[UIColor clearColor]];
     [tableView setTag:kTableViewTag];

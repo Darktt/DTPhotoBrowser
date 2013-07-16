@@ -91,27 +91,27 @@
     
     SEL tapGestureMethod = @selector(tapPhotoOfGesture:);
     
-    UIImageView *imageView = nil;
+    DTThumbnailView *thumbnail = nil;
     
     for (NSInteger i = 1; i <= 4; i++) {
         if (!copyMode) {
-            imageView = [DTThumbnailView new];
-            [imageView setUserInteractionEnabled:YES];
-            [imageView setTag:i];
+            thumbnail = [DTThumbnailView new];
+            [thumbnail setUserInteractionEnabled:YES];
+            [thumbnail setTag:i];
             
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:tapGestureMethod];
             [tapGesture setNumberOfTapsRequired:1];
             
-            [imageView setGestureRecognizers:@[tapGesture]];
+            [thumbnail setGestureRecognizers:@[tapGesture]];
             [tapGesture release];
         } else {
-            imageView = [UIImageView new];
+            thumbnail = [DTThumbnailView new];
         }
         
-        [self addSubview:imageView];
+        [self addSubview:thumbnail];
         
-        [_imageViews addObject:imageView];
-        [imageView release];
+        [_imageViews addObject:thumbnail];
+        [thumbnail release];
     }
     
     imageViews = [_imageViews retain];
@@ -129,6 +129,8 @@
     
     for (DTThumbnailView *thumbnail in imageViews) {
         NSUInteger index = [imageViews indexOfObject:thumbnail];
+        
+        NSLog(@"%@", [thumbnail class]);
         
         if (index < _thumbnails.count) {
             [thumbnail setThumbnail:_thumbnails[index]];

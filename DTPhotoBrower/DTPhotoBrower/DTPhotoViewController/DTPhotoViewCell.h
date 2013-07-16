@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DTAlbumMode.h"
 #import "DTThumbnailView.h"
 
 #define kCellForPhotoCount 4
@@ -28,7 +27,6 @@
 
 @protocol DTPhotoViewCellDelegate <NSObject>
 
-//- (void)photoViewCell:(DTPhotoViewCell *)photoViewCell tapedPhotoForImage:(UIImage *)image;
 - (void)photoViewCell:(DTPhotoViewCell *)photoViewCell tapedPhotoForThumbnail:(NSDictionary *)thumbnail;
 
 @end
