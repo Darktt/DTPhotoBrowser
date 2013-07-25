@@ -18,7 +18,7 @@
             completionBlock(error);
             return;
         }
-        
+      
         [self addAssetToAlbumWithAssetURL:assetURL album:albumName completionBlock:completionBlock];
     };
     
@@ -36,23 +36,26 @@
             completionBlock(error);
         }
         
-        ALAssetsGroupType groupType = [[group valueForProperty:ALAssetsGroupPropertyType] integerValue];
-        if (groupType == ALAssetsGroupSavedPhotos) {
-            albumFound = YES;
-            
-            completionBlock(nil);
-            return;
-        }
-        
         NSString *groupAlbumName = [group valueForProperty:ALAssetsGroupPropertyName];
         
         if ([albumName compare:groupAlbumName] != NSOrderedSame) {
             return;
         }
         
+        albumFound = YES;
+        *stop = YES;
+        
+        // If album name same and album is "camera roll" or "saved photos" ignore save to album;
+        ALAssetsGroupType groupType = [[group valueForProperty:ALAssetsGroupPropertyType] integerValue];
+        if (groupType == ALAssetsGroupSavedPhotos) {
+            completionBlock(nil);
+            return;
+        }
+        
         ALAssetsLibraryAssetForURLResultBlock result = ^(ALAsset *asset){
-            albumFound = YES;
             [group addAsset:asset];
+            
+            completionBlock(nil);
         };
         
         [self assetForURL:assetURL resultBlock:result failureBlock:completionBlock];
