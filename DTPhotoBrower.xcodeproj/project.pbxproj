@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		555B0C4D17A0BA8B00ABC94E /* ALAssetsLibrary+SaveAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 555B0C4C17A0BA8B00ABC94E /* ALAssetsLibrary+SaveAsset.m */; };
 		559AEA97177D51DD00EA81F3 /* NSArray+AroundArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 559AEA6C177D51DD00EA81F3 /* NSArray+AroundArray.m */; };
 		559AEA98177D51DD00EA81F3 /* NSDictionary+Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 559AEA6E177D51DD00EA81F3 /* NSDictionary+Dictionary.m */; };
 		559AEA99177D51DD00EA81F3 /* NSString+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 559AEA70177D51DD00EA81F3 /* NSString+String.m */; };
@@ -59,6 +60,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		555B0C4B17A0BA8B00ABC94E /* ALAssetsLibrary+SaveAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+SaveAsset.h"; sourceTree = "<group>"; };
+		555B0C4C17A0BA8B00ABC94E /* ALAssetsLibrary+SaveAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+SaveAsset.m"; sourceTree = "<group>"; };
+		555B0C4F17A0C6E500ABC94E /* DTAssetConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTAssetConfig.h; sourceTree = "<group>"; };
 		559AEA68177D51DD00EA81F3 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
 		559AEA69177D51DD00EA81F3 /* ColorNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorNames.h; sourceTree = "<group>"; };
 		559AEA6A177D51DD00EA81F3 /* DTInstancetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTInstancetype.h; sourceTree = "<group>"; };
@@ -308,6 +312,9 @@
 		55EFE595171643BD0020995D /* DTPhotoBrower */ = {
 			isa = PBXGroup;
 			children = (
+				555B0C4B17A0BA8B00ABC94E /* ALAssetsLibrary+SaveAsset.h */,
+				555B0C4C17A0BA8B00ABC94E /* ALAssetsLibrary+SaveAsset.m */,
+				555B0C4F17A0C6E500ABC94E /* DTAssetConfig.h */,
 				55EFE5D91716970D0020995D /* DTAlbumMode.h */,
 				55EFE59C171644B00020995D /* DTAlbumViewController.h */,
 				55EFE59D171644B00020995D /* DTAlbumViewController.m */,
@@ -427,6 +434,7 @@
 				55A568141794E1AA007E5646 /* DTPhotoViewCell.m in Sources */,
 				55A568151794E1AA007E5646 /* DTPhotoViewController.m in Sources */,
 				55A568161794E1AA007E5646 /* DTThumbnailView.m in Sources */,
+				555B0C4D17A0BA8B00ABC94E /* ALAssetsLibrary+SaveAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

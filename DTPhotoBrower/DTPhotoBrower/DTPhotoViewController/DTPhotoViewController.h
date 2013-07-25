@@ -34,6 +34,5 @@
 @property (nonatomic, retain) NSArray *selectedFiles;
 
 + (id)photoViewWithAssetsGroup:(ALAssetsGroup *)group mode:(DTAlbumMode)mode;
-//+ (id)photoViewWithAssetsGroup:(ALAssetsGroup *)group mode:(DTAlbumMode)mode source:(FileSource)source;
 
 @end

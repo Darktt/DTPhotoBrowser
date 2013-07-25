@@ -6,17 +6,22 @@
 //  Copyright (c) 2013 Darktt. All rights reserved.
 //
 
-#import <AssetsLibrary/AssetsLibrary.h>
 #import "DTAlbumViewController.h"
+
+// Framework
+#import <AssetsLibrary/AssetsLibrary.h>
+
+// Config
+#import "DTAssetConfig.h"
+
+// Class
 #import "DTTableViewCell.h"
+
+// ViewController
 #import "DTPhotoViewController.h"
 
-// Get all assets
-#define kALAssetsFilter [ALAssetsFilter allAssets]
-// Get photo assets only
-//#define kALAssetsFilter [ALAssetsFilter allPhotos]
-// Get Video assets only
-//#define kALAssetsFilter [ALAssetsFilter allVideos]
+//#define EnableAddAlbumButton
+//#define ShowOtherAlbum
 
 #define kAlertTitle @"Emty Album"
 #define kAlertMessage @"Your Album is emty."
@@ -73,12 +78,16 @@
     currentMode = mode;
     [self setDefaultInfomation];
     
+#ifdef EnableAddAlbumButton
+    
     if (currentMode == DTAlbumModeCopy) {
         UIBarButtonItem *addAlbum = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(askNewAlbumName:)];
         
         [self.navigationItem setRightBarButtonItem:addAlbum];
         [addAlbum release];
     }
+    
+#endif
     
     return self;
 }
@@ -209,8 +218,18 @@
         NSLog(@"%@", error);
     };
     
+    ALAssetsGroupType groupType = ALAssetsGroupAll;
+    
+    if (currentMode != DTAlbumModeNormal) {
+#ifdef ShowOtherAlbum
+        groupType = ALAssetsGroupAlbum | ALAssetsGroupSavedPhotos;
+#else
+        groupType = ALAssetsGroupSavedPhotos;
+#endif
+    }
+    
     libary = [ALAssetsLibrary new];
-    [libary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:libraryEnumerationBlock failureBlock:failureBlock];
+    [libary enumerateGroupsWithTypes:groupType usingBlock:libraryEnumerationBlock failureBlock:failureBlock];
 }
 
 #pragma mark Create New Album

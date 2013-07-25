@@ -6,19 +6,23 @@
 //  Copyright (c) 2013 Darktt. All rights reserved.
 //
 
+#import "DTPhotoViewController.h"
+
+// Framework
 #import <AssetsLibrary/AssetsLibrary.h>
 
-#import "DTPhotoViewController.h"
+// Config
+#import "DTAssetConfig.h"
+
+// Category
+#import "ALAssetsLibrary+SaveAsset.h"
+
+// Class
 #import "DTAssetType.h"
 #import "DTPhotoViewCell.h"
-//#import "DTPhotoBrowerViewController.h"
 
-// Get all assets
-#define kGetAlassetType ![[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeUnknown]
-// Get photo assets only
-//#define kGetAlassetType [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]
-// Get video assets onlt
-//#define kGetAlassetType [[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]
+// ViewController
+#import "DTPhotoBrowerViewController.h"
 
 // Tags
 #define kTableViewTag 1
@@ -273,22 +277,54 @@
     
     UIImage *saveImage = [UIImage imageWithContentsOfFile:imageName];
     
-    UIImageWriteToSavedPhotosAlbum(saveImage, self, @selector(image:didFinishSavingWithError:contextinfo:), imageName);
+    ALAssetsLibrarySaveCompletionBlock completionBlock = ^(NSError *error){
+        if (error != nil) {
+            NSLog(@"%@", error);
+            
+            [_alertView dismissWithClickedButtonIndex:_alertView.cancelButtonIndex animated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            return;
+        }
+        
+        NSLog(@"%s %@ Saved", __func__, [[imageName pathComponents] lastObject]);
+        
+        UIProgressView *progress = (UIProgressView *)[_alertView viewWithTag:kProgressTag];
+        
+        NSUInteger nextIndex = _index + 1;
+        CGFloat progressValue = (CGFloat)nextIndex / (CGFloat)selectedAssets.count;
+        [progress setProgress:progressValue animated:YES];
+        
+        if (nextIndex == selectedAssets.count || fileProcessCanceled) {
+            [_alertView dismissWithClickedButtonIndex:_alertView.cancelButtonIndex animated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            return;
+        }
+        
+        [self performSelector:@selector(fileProcessAtIndex:) withObject:@(nextIndex) afterDelay:0.5];
+    };
+    
+    ALAssetsLibrary *library = [ALAssetsLibrary new];
+    [library saveImageToAlbumWithImage:saveImage album:self.title completionBlock:completionBlock];
+    [library release];
 }
 
 - (IBAction)copyHere:(id)sender
 {
+#pragma message Copy image or video data to here.
+    [_alertView setTitle:kAlertCopyTitle];
+    [_alertView show];
     
+    [self fileProcessAtIndex:@(0)];
 }
 
 - (IBAction)moveHere:(id)sender
 {
-  
+#pragma message Move image or video data to here.
 }
 
 - (IBAction)copyTo:(id)sender
 {
-    
+#pragma message Copy asset out to external viewController.
 }
 
 - (IBAction)enterEditMode:(id)sender
@@ -328,40 +364,6 @@
     }
     
     [tableView reloadData];
-}
-
-#pragma mark - Save Image Selector
-
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextinfo:(void *)contextinfo
-{
-    UIProgressView *progress = (UIProgressView *)[_alertView viewWithTag:kProgressTag];
-    
-    if (error != nil) {
-        NSLog(@"%@", error);
-        
-        [_alertView dismissWithClickedButtonIndex:_alertView.cancelButtonIndex animated:YES];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        return;
-    }
-    
-    NSString *file = contextinfo;
-    
-    if (currentMode == DTAlbumModeMove) {
-/// MARK: Reamove source file
-        
-    }
-    
-    NSUInteger index = [selectedAssets indexOfObject:file] + 1;
-    CGFloat progressValue = (CGFloat)index / (CGFloat)selectedAssets.count;
-    [progress setProgress:progressValue animated:YES];
-    
-    if (index == selectedAssets.count || fileProcessCanceled) {
-        [_alertView dismissWithClickedButtonIndex:_alertView.cancelButtonIndex animated:YES];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        return;
-    }
-    
-    [self performSelector:@selector(fileProcessAtIndex:) withObject:@(index) afterDelay:0.5];
 }
 
 #pragma mark - UIAlertView Method
@@ -513,16 +515,16 @@
         return;
     }
     
-//    DTPhotoBrowerViewController *photoBrower = [DTPhotoBrowerViewController photoBrowerWithIndex:index forPhotosArray:photosOfAsset];
-//    [self.navigationController pushViewController:photoBrower animated:YES];
     ALAsset *asset = assets[index];
     
     if ([[asset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]) {
-        /// MARK: Show photo
+        /// MARK: Show photo assets
+        DTPhotoBrowerViewController *photoBrower = [DTPhotoBrowerViewController photoBrowerWithIndex:index forPhotosArray:assetType.photoAssets];
+        [self.navigationController pushViewController:photoBrower animated:YES];
     }
     
     if ([[asset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]) {
-        /// MARK: Show video
+        /// MARK: Show video assets
     }
 }
 
