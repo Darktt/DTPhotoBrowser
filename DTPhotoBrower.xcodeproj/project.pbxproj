@@ -527,15 +527,15 @@
 		55EFE5931716438C0020995D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eden Li (85B39NPV8D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eden Li (85B39NPV8D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CHI MING KUO (GL6PP6TVQS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHI MING KUO (GL6PP6TVQS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DTPhotoBrower/DTPhotoBrower-Prefix.pch";
 				INFOPLIST_FILE = "DTPhotoBrower/DTPhotoBrower-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E8145E22-C4C6-4768-ADDA-12F193DDFF52";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8145E22-C4C6-4768-ADDA-12F193DDFF52";
+				PROVISIONING_PROFILE = "2381A397-471E-40DA-B6A7-B1412C942E99";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2381A397-471E-40DA-B6A7-B1412C942E99";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -543,15 +543,15 @@
 		55EFE5941716438C0020995D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eden Li (85B39NPV8D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eden Li (85B39NPV8D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CHI MING KUO (GL6PP6TVQS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHI MING KUO (GL6PP6TVQS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DTPhotoBrower/DTPhotoBrower-Prefix.pch";
 				INFOPLIST_FILE = "DTPhotoBrower/DTPhotoBrower-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E8145E22-C4C6-4768-ADDA-12F193DDFF52";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8145E22-C4C6-4768-ADDA-12F193DDFF52";
+				PROVISIONING_PROFILE = "2381A397-471E-40DA-B6A7-B1412C942E99";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2381A397-471E-40DA-B6A7-B1412C942E99";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

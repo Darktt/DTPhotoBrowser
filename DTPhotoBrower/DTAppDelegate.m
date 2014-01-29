@@ -22,6 +22,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
+    if ([UIWindow instancesRespondToSelector:@selector(setTintColor:)]) {
+        [self.window setTintColor:[UIColor whiteColor]];
+    }
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[[DTViewController alloc] initWithNibName:@"DTViewController_iPhone" bundle:nil] autorelease];

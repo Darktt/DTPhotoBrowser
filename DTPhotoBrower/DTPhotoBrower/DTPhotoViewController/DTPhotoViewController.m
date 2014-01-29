@@ -86,6 +86,48 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Appearance Setting
+    if ([UINavigationBar instancesRespondToSelector:@selector(setBarTintColor:)]) {
+        // iOS 7 Style or Highter
+        [self.navigationController.navigationBar setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor]}];
+        [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor grayColor]];
+    } else {
+        // iOS 6 Style or Lower
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+        [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+        [self.navigationController.navigationBar setTranslucent:YES];
+        [self setWantsFullScreenLayout:YES];
+    }
+    
+    NSString *title = [_group valueForProperty:ALAssetsGroupPropertyName];
+    
+    [self setTitle:title];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    //    [self.navigationController.navigationBar setTranslucent:NO];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [self setTitle:kBackTitle];
+    
+    if (!self.navigationController.toolbarHidden) {
+        [self enterEditMode:nil];
+        [self.navigationController setToolbarHidden:YES animated:YES];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -94,9 +136,10 @@
     // Main View Setting
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [tableView setDataSource:self];
-    [tableView setBackgroundColor:[UIColor blackColor]];
+//    [tableView setBackgroundColor:[UIColor blackColor]];
     [tableView setSeparatorColor:[UIColor clearColor]];
     [tableView setTag:kTableViewTag];
+    [tableView setRowHeight:kCellHeight];
     
     [self setView:tableView];
     [tableView release];
@@ -152,39 +195,6 @@
     }
     
     [self getPhotoInfomation];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-    [self.navigationController.navigationBar setTintColor:[UIColor clearColor]];
-    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-    [self.navigationController.navigationBar setTranslucent:YES];
-    [self setWantsFullScreenLayout:YES];
-    
-    NSString *title = [_group valueForProperty:ALAssetsGroupPropertyName];
-    
-    [self setTitle:title];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [self.navigationController.navigationBar setTranslucent:NO];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    [self setTitle:kBackTitle];
-    
-    if (!self.navigationController.toolbarHidden) {
-        [self enterEditMode:nil];
-        [self.navigationController setToolbarHidden:YES animated:YES];
-    }
 }
 
 - (void)dealloc
@@ -310,7 +320,7 @@
 
 - (IBAction)copyHere:(id)sender
 {
-#pragma message Copy image or video data to here.
+//#pragma message Copy image or video data to here.
     [_alertView setTitle:kAlertCopyTitle];
     [_alertView show];
     
@@ -319,12 +329,12 @@
 
 - (IBAction)moveHere:(id)sender
 {
-#pragma message Move image or video data to here.
+//#pragma message Move image or video data to here.
 }
 
 - (IBAction)copyTo:(id)sender
 {
-#pragma message Copy asset out to external viewController.
+//#pragma message Copy asset out to external viewController.
 }
 
 - (IBAction)enterEditMode:(id)sender
@@ -454,6 +464,8 @@
                 default:
                     break;
             }
+            
+            [cell.backgroundView setBackgroundColor:tableView.backgroundColor];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
     } else {
@@ -519,8 +531,8 @@
     
     if ([[asset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]) {
         /// MARK: Show photo assets
-        DTPhotoBrowerViewController *photoBrower = [DTPhotoBrowerViewController photoBrowerWithIndex:index forPhotosArray:assetType.photoAssets];
-        [self.navigationController pushViewController:photoBrower animated:YES];
+//        DTPhotoBrowerViewController *photoBrower = [DTPhotoBrowerViewController photoBrowerWithIndex:index forPhotosArray:assetType.photoAssets];
+//        [self.navigationController pushViewController:photoBrower animated:YES];
     }
     
     if ([[asset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]) {

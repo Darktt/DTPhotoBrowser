@@ -64,6 +64,8 @@
 - (void)layoutSubviews
 {
     [self loadCellView];
+    
+    [self.backgroundView setFrame:self.bounds];
 }
 
 - (void)dealloc
@@ -130,7 +132,7 @@
     for (DTThumbnailView *thumbnail in imageViews) {
         NSUInteger index = [imageViews indexOfObject:thumbnail];
         
-        NSLog(@"%@", [thumbnail class]);
+//        NSLog(@"%@", [thumbnail class]);
         
         if (index < _thumbnails.count) {
             [thumbnail setThumbnail:_thumbnails[index]];
@@ -157,13 +159,6 @@
 }
 
 #pragma mark - Overwrite Methods
-
-- (void)setBackgroundColor:(UIColor *)backgroundColor
-{
-    UIView *backgroundViewView = [self viewWithTag:kBackgroundViewViewTag];
-    
-    [backgroundViewView setBackgroundColor:backgroundColor];
-}
 
 - (void)setAccessoryType:(UITableViewCellAccessoryType)accessoryType
 {

@@ -109,14 +109,42 @@
     albums = [NSArray new];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setTitle:@"Photo Brower"];
+    
+    // Appearance Setting
+    if ([UINavigationBar instancesRespondToSelector:@selector(setBarTintColor:)]) {
+        // iOS 7 Style or Highter
+        [self.navigationController.navigationBar setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor]}];
+        [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor grayColor]];
+    } else {
+        // iOS 6 Style or Lower
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+        [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+        [self.navigationController.navigationBar setTranslucent:YES];
+        [self setWantsFullScreenLayout:YES];
+    }
+    
+    if (currentMode == DTAlbumModeCopy) {
+        
+        // Reload album infomation
+        [self getAlbumInfomation];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self setTitle:kBackTitle];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-    [self.navigationController.navigationBar setTranslucent:YES];
-    [self setWantsFullScreenLayout:YES];
     
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:kCloseButtonTitle style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
     
@@ -132,24 +160,6 @@
     [tableView release];
     
     [self getAlbumInfomation];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self setTitle:@"Photo Brower"];
-    
-    if (currentMode == DTAlbumModeCopy) {
-        
-        // Reload album infomation
-        [self getAlbumInfomation];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self setTitle:kBackTitle];
 }
 
 - (void)dealloc
@@ -221,11 +231,17 @@
     ALAssetsGroupType groupType = ALAssetsGroupAll;
     
     if (currentMode != DTAlbumModeNormal) {
+        
 #ifdef ShowOtherAlbum
+        
         groupType = ALAssetsGroupAlbum | ALAssetsGroupSavedPhotos;
+        
 #else
+        
         groupType = ALAssetsGroupSavedPhotos;
+        
 #endif
+        
     }
     
     libary = [ALAssetsLibrary new];
@@ -302,7 +318,6 @@
         UITextField *albumName = [alertView textFieldAtIndex:0];
         
         [self addNewAlbumWithAlbumName:albumName.text];
-//        [self addNewAlbumWithAlbumName:nil];
     }
 }
 
