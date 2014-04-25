@@ -188,12 +188,16 @@
     NSMutableDictionary *albumData = [NSMutableDictionary dictionary];
     
     ALAssetsGroupEnumerationResultsBlock groupEnumerationBlock = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
-        if (result) {
+        if (result != nil) {
+            
             UIImage *photo = [UIImage imageWithCGImage:[result thumbnail] scale:1 orientation:UIImageOrientationUp];
             [albumData setObject:photo forKey:kLastPhotoKey];
+            
         } else {
+            
             [_albums addObject:[[albumData copy] autorelease]];
             [albumData removeAllObjects];
+            
         }
     };
     

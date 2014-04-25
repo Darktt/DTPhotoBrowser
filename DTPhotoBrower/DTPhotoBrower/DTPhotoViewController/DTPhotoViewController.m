@@ -417,11 +417,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (thumbnails.count % kCellForPhotoCount == 0) {
-        return thumbnails.count / kCellForPhotoCount;
+    if ([thumbnails count] % kCellForPhotoCount == 0) {
+        return [thumbnails count] / kCellForPhotoCount;
     }
     
-    return (thumbnails.count / kCellForPhotoCount) + 1;
+    return ([thumbnails count] / kCellForPhotoCount) + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -436,7 +436,7 @@
         
         NSInteger index = j * kCellForPhotoCount + i;
         
-        if (index > thumbnails.count) {
+        if (index > [thumbnails count]) {
             break;
         }
         
