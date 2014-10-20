@@ -205,9 +205,9 @@
         if(group != nil) {
             [group setAssetsFilter:kALAssetsFilter];
             
-            NSString *groupName = [NSString stringWithFormat:@"%@ (%d)", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]];
+            NSString *groupName = [NSString stringWithFormat:@"%@ (%zd)", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]];
             
-//            NSLog(@"Album Name:%@", groupName);
+            NSLog(@"Album Name:%@", groupName);
             
             [albumData setObject:groupName forKey:kAlbumNameKey];
             [albumData setObject:group forKey:kAlassetsGroupKey];
