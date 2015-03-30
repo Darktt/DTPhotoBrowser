@@ -219,6 +219,10 @@ CGFloat const kRowHeight = 65.0f;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (_collections.count == 0) {
+        return 1;
+    }
+    
     return 2;
 }
 
