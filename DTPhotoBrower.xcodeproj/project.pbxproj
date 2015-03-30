@@ -21,6 +21,9 @@
 		525CB2FF1AC53C06008A21FE /* PHCollection+Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2FC1AC53C06008A21FE /* PHCollection+Collection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		525CB3001AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		525CB3031AC54803008A21FE /* DTViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525CB3021AC54803008A21FE /* DTViewController.xib */; };
+		528232001AC93D830076209B /* DTPhotoBrowerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528231FF1AC93D830076209B /* DTPhotoBrowerController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		528232031AC949460076209B /* PHImageManager+ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 528232021AC949460076209B /* PHImageManager+ImageManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		52ECBF181AC94D9600192A4B /* DTPhotoBrowerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECBF171AC94D9600192A4B /* DTPhotoBrowerCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,12 @@
 		525CB2FD1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHPhotoLibrary+PhotoLibrary.h"; sourceTree = "<group>"; };
 		525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHPhotoLibrary+PhotoLibrary.m"; sourceTree = "<group>"; };
 		525CB3021AC54803008A21FE /* DTViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTViewController.xib; sourceTree = "<group>"; };
+		528231FE1AC93D830076209B /* DTPhotoBrowerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowerController.h; sourceTree = "<group>"; };
+		528231FF1AC93D830076209B /* DTPhotoBrowerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowerController.m; sourceTree = "<group>"; };
+		528232011AC949460076209B /* PHImageManager+ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHImageManager+ImageManager.h"; sourceTree = "<group>"; };
+		528232021AC949460076209B /* PHImageManager+ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHImageManager+ImageManager.m"; sourceTree = "<group>"; };
+		52ECBF161AC94D9600192A4B /* DTPhotoBrowerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowerCell.h; sourceTree = "<group>"; };
+		52ECBF171AC94D9600192A4B /* DTPhotoBrowerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowerCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +170,12 @@
 				525CB2F91AC53B4C008A21FE /* DTPhotoBrowerSetting.m */,
 				525CB2F51AC53B33008A21FE /* DTGroupListViewController.h */,
 				525CB2F61AC53B33008A21FE /* DTGroupListViewController.m */,
+				52ECBF161AC94D9600192A4B /* DTPhotoBrowerCell.h */,
+				52ECBF171AC94D9600192A4B /* DTPhotoBrowerCell.m */,
+				528231FE1AC93D830076209B /* DTPhotoBrowerController.h */,
+				528231FF1AC93D830076209B /* DTPhotoBrowerController.m */,
 			);
-			name = DTPhotoBrower;
+			path = DTPhotoBrower;
 			sourceTree = "<group>";
 		};
 		525CB3011AC53C0D008A21FE /* Categories */ = {
@@ -172,8 +185,10 @@
 				525CB2FC1AC53C06008A21FE /* PHCollection+Collection.m */,
 				525CB2FD1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.h */,
 				525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */,
+				528232011AC949460076209B /* PHImageManager+ImageManager.h */,
+				528232021AC949460076209B /* PHImageManager+ImageManager.m */,
 			);
-			name = Categories;
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,10 +296,13 @@
 				5213B9D11AC536DD00950C97 /* DTViewController.m in Sources */,
 				525CB2FF1AC53C06008A21FE /* PHCollection+Collection.m in Sources */,
 				5213B9CE1AC536DD00950C97 /* DTAppDelegate.m in Sources */,
+				52ECBF181AC94D9600192A4B /* DTPhotoBrowerCell.m in Sources */,
+				528232001AC93D830076209B /* DTPhotoBrowerController.m in Sources */,
 				525CB2FA1AC53B4C008A21FE /* DTPhotoBrowerSetting.m in Sources */,
 				525CB2F71AC53B33008A21FE /* DTGroupListViewController.m in Sources */,
 				5213B9CB1AC536DD00950C97 /* main.m in Sources */,
 				525CB3001AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m in Sources */,
+				528232031AC949460076209B /* PHImageManager+ImageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

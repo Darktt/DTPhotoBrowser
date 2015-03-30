@@ -2,12 +2,14 @@
 //  DTGroupListViewController.m
 //  DTPhotoBrower
 //
-//  Created by EdenLi on 2015/3/27.
-//  Copyright (c) 2015年 Darktt. All rights reserved.
+//  Created by Darktt on 2015/3/27.
+//  Copyright (c) 2015 Darktt. All rights reserved.
 //
 
 #import "DTGroupListViewController.h"
+#import "PHImageManager+ImageManager.h"
 #import "DTPhotoBrowerSetting.h"
+#import "DTPhotoBrowerController.h"
 
 CGFloat const kRowHeight = 65.0f;
 
@@ -75,7 +77,7 @@ CGFloat const kRowHeight = 65.0f;
 {
     [super viewDidLoad];
     
-    NSAssert(self.navigationController != nil, @"Must use UINavigationController");
+    NSAssert(self.navigationController != nil, @"Must use with UINavigationController");
     
     [self setEdgesForExtendedLayout:UIRectEdgeAll];
     [self setAutomaticallyAdjustsScrollViewInsets:YES];
@@ -121,6 +123,21 @@ CGFloat const kRowHeight = 65.0f;
     // Dispose of any resources that can be recreated.
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
+{
+    return UIStatusBarAnimationFade;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 #pragma mark - Fetch Photo Group
 
 - (PHFetchOptions *)fetchOptions
@@ -129,8 +146,8 @@ CGFloat const kRowHeight = 65.0f;
     
     PHFetchOptions *fetchOptions = [PHFetchOptions new];
     [fetchOptions setPredicate:predicate];
-//    [fetchOptions setIncludeAllBurstAssets:[DTPhotoBrowerSetting includeAllBurstAssets]];
-//    [fetchOptions setIncludeHiddenAssets:[DTPhotoBrowerSetting includeHiddenAssets]];
+    [fetchOptions setIncludeAllBurstAssets:[DTPhotoBrowerSetting includeAllBurstAssets]];
+    [fetchOptions setIncludeHiddenAssets:[DTPhotoBrowerSetting includeHiddenAssets]];
     
     return [fetchOptions autorelease];
 }
@@ -166,7 +183,7 @@ CGFloat const kRowHeight = 65.0f;
     [_tableView reloadData];
 }
 
-- (PHImageRequestID)fetchLastImageInCollection:(PHAssetCollection *)collection resultHandler:(void (^) (UIImage *image))resultHandler
+- (PHFetchResult *)assetsInCollection:(PHAssetCollection *)collection
 {
     PHAssetMediaType mediaType = [DTPhotoBrowerSetting fetchMediaType];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"mediaType = %i", mediaType];
@@ -179,6 +196,13 @@ CGFloat const kRowHeight = 65.0f;
     PHFetchResult *result = [PHAsset fetchAssetsInAssetCollection:collection options:fetchOptions];
     [fetchOptions release];
     
+    return result;
+}
+
+- (void)fetchLastImageInCollection:(PHAssetCollection *)collection resultHandler:(void (^) (UIImage *image))resultHandler
+{
+    PHFetchResult *result = [self assetsInCollection:collection];
+    
     PHAsset *lastAsset = result.lastObject;
     
     CGFloat screenScale = [[UIScreen mainScreen] scale];
@@ -187,32 +211,8 @@ CGFloat const kRowHeight = 65.0f;
         .height = kRowHeight * screenScale
     };
     
-    PHImageContentMode contentMode = PHImageContentModeAspectFill;
-    
-    CGFloat minimumSide = MIN(lastAsset.pixelWidth, lastAsset.pixelHeight);
-    CGRect square = CGRectMake(0, 0, minimumSide, minimumSide);
-    
-    PHImageRequestOptions *requestOptions = [PHImageRequestOptions new];
-    [requestOptions setSynchronous:YES];
-    [requestOptions setDeliveryMode:PHImageRequestOptionsDeliveryModeHighQualityFormat];
-    [requestOptions setResizeMode:PHImageRequestOptionsResizeModeExact];
-    [requestOptions setNormalizedCropRect:square];
-    
-    void (^_resultHandler) (UIImage *, NSDictionary *) = ^(UIImage *result, NSDictionary *info) {
-        NSError *error = info[PHImageErrorKey];
-        
-        if (error != nil) {
-            NSLog(@"Request image error: %@", error);
-        }
-        
-        if (resultHandler != nil) resultHandler(result);
-    };
-    
     PHImageManager *imageManager = [PHImageManager defaultManager];
-    PHImageRequestID requestID = [imageManager requestImageForAsset:lastAsset targetSize:limitSize contentMode:contentMode options:requestOptions resultHandler:_resultHandler];
-    [requestOptions release];
-    
-    return requestID;
+    [imageManager thumbnailImageWithAsset:lastAsset imageSize:limitSize result:resultHandler];
 }
 
 #pragma mark - UITableView DataSource Methods
@@ -287,7 +287,24 @@ CGFloat const kRowHeight = 65.0f;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    PHFetchResult *assets = nil;
+    NSString *title = nil;
+    
+    if (indexPath.section == 0) {
+        assets = [self assetsInCollection:_allPhotos];
+        title = _allPhotos.localizedTitle;
+    } else {
+        NSUInteger index = indexPath.row;
+        PHAssetCollection *collection = _collections[index];
+        
+        assets = [self assetsInCollection:collection];
+        title = collection.localizedTitle;
+    }
+    
+    DTPhotoBrowerController *photoBrower = [DTPhotoBrowerController photoBrowerWithFetchResult:assets];
+    [photoBrower setTitle:title];
+    
+    [self.navigationController pushViewController:photoBrower animated:YES];
 }
-
 
 @end
