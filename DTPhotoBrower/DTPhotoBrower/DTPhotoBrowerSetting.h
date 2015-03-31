@@ -14,9 +14,15 @@
 
 // Titles
 + (NSString *)titleOfGroupList;
-+ (NSString *)titleOf;
+//+ (NSString *)titleOf;
 
 + (NSString *)cameraRollTitle;
+
+// BarButtonItem Title
++ (NSString *)cancelBarButtonTitle;
+
+// Button Titles
++ (NSString *)cancelTitle;
 
 // Fetch options
 + (PHAssetMediaType)fetchMediaType;

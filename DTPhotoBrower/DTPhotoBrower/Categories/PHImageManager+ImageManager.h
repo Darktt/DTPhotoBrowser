@@ -12,6 +12,8 @@ typedef void (^PHImageManagerFetchImageResult) (UIImage *image);
 
 @interface PHImageManager (ImageManager)
 
-- (void)thumbnailImageWithAsset:(PHAsset *)asset imageSize:(CGSize)size result:(PHImageManagerFetchImageResult)result;
+- (void)thumbnailImageWithAsset:(PHAsset *)asset imageSize:(CGSize)size result:(PHImageManagerFetchImageResult)resultHandler;
+
+- (PHImageRequestID)imageWithAsset:(PHAsset *)asset limitSize:(CGSize)size result:(PHImageManagerFetchImageResult)resultHandler;
 
 @end

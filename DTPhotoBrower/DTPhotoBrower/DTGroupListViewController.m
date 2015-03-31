@@ -79,7 +79,8 @@ CGFloat const kRowHeight = 65.0f;
     
     NSAssert(self.navigationController != nil, @"Must use with UINavigationController");
     
-    [self setEdgesForExtendedLayout:UIRectEdgeAll];
+    [self setupCancelButtonItem];
+    
     [self setAutomaticallyAdjustsScrollViewInsets:YES];
     [self setExtendedLayoutIncludesOpaqueBars:YES];
     
@@ -87,8 +88,11 @@ CGFloat const kRowHeight = 65.0f;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
+    UIViewAutoresizing autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:screenRect style:UITableViewStylePlain];
+    [tableView setAutoresizingMask:autoresizingMask];
+    [tableView setAutoresizesSubviews:YES];
     [tableView setDataSource:self];
     [tableView setDelegate:self];
     
@@ -99,6 +103,7 @@ CGFloat const kRowHeight = 65.0f;
     
     void (^requestHandle) (PHAuthorizationStatus) = ^(PHAuthorizationStatus status) {
         if (status != PHAuthorizationStatusAuthorized) {
+//            [];
             return;
         }
         
@@ -136,6 +141,33 @@ CGFloat const kRowHeight = 65.0f;
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
+}
+
+#pragma mark - UI Setup
+
+- (void)setupCancelButtonItem
+{
+    NSString *title = [DTPhotoBrowerSetting cancelBarButtonTitle];
+    UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(dismiss:)];
+    
+    [self.navigationItem setLeftBarButtonItem:cancelButtonItem];
+    [cancelButtonItem release];
+}
+
+#pragma mark - Override Property
+
+- (id<DTGroupListViewControllerDelegate>)target
+{
+    return _target;
+}
+
+#pragma mark - Action
+
+- (void)dismiss:(id)sender
+{
+    if ([_target respondsToSelector:@selector(groupListDidDismiss:)]) {
+        [_target groupListDidDismiss:self];
+    }
 }
 
 #pragma mark - Fetch Photo Group

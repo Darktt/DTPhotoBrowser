@@ -16,6 +16,8 @@
 		5213B9EF1AC5389E00950C97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5213B9EE1AC5389E00950C97 /* UIKit.framework */; };
 		5213B9F11AC538AF00950C97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5213B9F01AC538AF00950C97 /* Foundation.framework */; };
 		5213B9F31AC538B700950C97 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5213B9F21AC538B700950C97 /* Photos.framework */; };
+		524D56741ACA49590005106C /* DTPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524D56731ACA49590005106C /* DTPhotoPreviewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		524D56771ACA80360005106C /* PHFetchResult+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 524D56761ACA80360005106C /* PHFetchResult+Array.m */; };
 		525CB2F71AC53B33008A21FE /* DTGroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2F61AC53B33008A21FE /* DTGroupListViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		525CB2FA1AC53B4C008A21FE /* DTPhotoBrowerSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2F91AC53B4C008A21FE /* DTPhotoBrowerSetting.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		525CB2FF1AC53C06008A21FE /* PHCollection+Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2FC1AC53C06008A21FE /* PHCollection+Collection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -52,6 +54,10 @@
 		5213B9EE1AC5389E00950C97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5213B9F01AC538AF00950C97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5213B9F21AC538B700950C97 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		524D56721ACA49590005106C /* DTPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoPreviewController.h; sourceTree = "<group>"; };
+		524D56731ACA49590005106C /* DTPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoPreviewController.m; sourceTree = "<group>"; };
+		524D56751ACA80360005106C /* PHFetchResult+Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHFetchResult+Array.h"; sourceTree = "<group>"; };
+		524D56761ACA80360005106C /* PHFetchResult+Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHFetchResult+Array.m"; sourceTree = "<group>"; };
 		525CB2F51AC53B33008A21FE /* DTGroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTGroupListViewController.h; sourceTree = "<group>"; };
 		525CB2F61AC53B33008A21FE /* DTGroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTGroupListViewController.m; sourceTree = "<group>"; };
 		525CB2F81AC53B4C008A21FE /* DTPhotoBrowerSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowerSetting.h; sourceTree = "<group>"; };
@@ -174,6 +180,8 @@
 				52ECBF171AC94D9600192A4B /* DTPhotoBrowerCell.m */,
 				528231FE1AC93D830076209B /* DTPhotoBrowerController.h */,
 				528231FF1AC93D830076209B /* DTPhotoBrowerController.m */,
+				524D56721ACA49590005106C /* DTPhotoPreviewController.h */,
+				524D56731ACA49590005106C /* DTPhotoPreviewController.m */,
 			);
 			path = DTPhotoBrower;
 			sourceTree = "<group>";
@@ -187,6 +195,8 @@
 				525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */,
 				528232011AC949460076209B /* PHImageManager+ImageManager.h */,
 				528232021AC949460076209B /* PHImageManager+ImageManager.m */,
+				524D56751ACA80360005106C /* PHFetchResult+Array.h */,
+				524D56761ACA80360005106C /* PHFetchResult+Array.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -296,7 +306,9 @@
 				5213B9D11AC536DD00950C97 /* DTViewController.m in Sources */,
 				525CB2FF1AC53C06008A21FE /* PHCollection+Collection.m in Sources */,
 				5213B9CE1AC536DD00950C97 /* DTAppDelegate.m in Sources */,
+				524D56771ACA80360005106C /* PHFetchResult+Array.m in Sources */,
 				52ECBF181AC94D9600192A4B /* DTPhotoBrowerCell.m in Sources */,
+				524D56741ACA49590005106C /* DTPhotoPreviewController.m in Sources */,
 				528232001AC93D830076209B /* DTPhotoBrowerController.m in Sources */,
 				525CB2FA1AC53B4C008A21FE /* DTPhotoBrowerSetting.m in Sources */,
 				525CB2F71AC53B33008A21FE /* DTGroupListViewController.m in Sources */,

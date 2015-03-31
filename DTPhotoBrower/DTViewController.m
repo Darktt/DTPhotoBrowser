@@ -10,7 +10,7 @@
 
 #import "DTGroupListViewController.h"
 
-@interface DTViewController ()
+@interface DTViewController () <DTGroupListViewControllerDelegate>
 
 - (IBAction)openAlbum:(id)sender;
 
@@ -86,6 +86,13 @@
     UINavigationController *__autoreleasing navigation = [[UINavigationController alloc] initWithRootViewController:groupList];
     
     [self presentViewController:navigation animated:YES completion:nil];
+}
+
+#pragma mark - DTGroupListViewController Delegate
+
+- (void)groupListDidDismiss:(DTGroupListViewController *)groupList
+{
+    [groupList dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

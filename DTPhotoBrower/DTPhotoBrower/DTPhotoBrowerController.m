@@ -7,9 +7,12 @@
 //
 
 #import "DTPhotoBrowerController.h"
+#import "PHFetchResult+Array.h"
 #import "PHImageManager+ImageManager.h"
 
+#import "DTPhotoBrowerSetting.h"
 #import "DTPhotoBrowerCell.h"
+#import "DTPhotoPreviewController.h"
 
 @import Photos;
 @import AssetsLibrary;
@@ -26,8 +29,12 @@ static NSString *kCellIdentifier = @"Cell";
 {
     NSArray *_assets;
     PHFetchResult *_fetchResult;
+    PHCachingImageManager *_imageManager;
     
     UICollectionView *_collectionView;
+    
+    PHImageRequestID _requestID;
+    UIAlertController *_alertController;
 }
 
 @end
@@ -67,6 +74,7 @@ static NSString *kCellIdentifier = @"Cell";
     if (self == nil) return nil;
     
     _fetchResult = [fetchResult retain];
+    _imageManager = [PHCachingImageManager new];
     
     return self;
 }
@@ -108,6 +116,7 @@ static NSString *kCellIdentifier = @"Cell";
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
     UICollectionViewFlowLayout *collectionViewLayout = [UICollectionViewFlowLayout new];
+    UIViewAutoresizing autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     _collectionView = [[UICollectionView alloc] initWithFrame:screenRect collectionViewLayout:collectionViewLayout];
     [_collectionView registerClass:[DTPhotoBrowerCell class] forCellWithReuseIdentifier:kCellIdentifier];
@@ -115,9 +124,15 @@ static NSString *kCellIdentifier = @"Cell";
     [_collectionView setAlwaysBounceVertical:YES];
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
+    [_collectionView setAutoresizingMask:autoresizingMask];
+    [_collectionView setAutoresizesSubviews:YES];
     
     [self.view addSubview:_collectionView];
     [collectionViewLayout release];
+    
+    if (_fetchResult != nil) {
+        [self startCacheAssets];
+    }
 }
 
 - (void)dealloc
@@ -130,6 +145,12 @@ static NSString *kCellIdentifier = @"Cell";
     if (_fetchResult != nil) {
         [_fetchResult release];
         _fetchResult = nil;
+    }
+    
+    if (_imageManager != nil) {
+        [self stopCacheAssets];
+        [_imageManager release];
+        _imageManager = nil;
     }
     
     [_collectionView release];
@@ -158,6 +179,7 @@ static NSString *kCellIdentifier = @"Cell";
 }
 
 #pragma mark - Fetch Image from Asset
+#pragma mark #AssetLibrary
 
 - (UIImage *)imageWithAsset:(ALAsset *)asset forQuality:(DTPhotoBrowerAssetQuality)quality
 {
@@ -185,10 +207,75 @@ static NSString *kCellIdentifier = @"Cell";
     return image;
 }
 
-- (void)fetchImageWithPHAsset:(PHAsset *)asset forSize:(CGSize)size result:(PHImageManagerFetchImageResult)resultHandler
+#pragma mark #Photo Framework
+
+- (CGSize)imageLimitSizeForAsset:(PHAsset *)asset
 {
-    PHImageManager *imageManager = [PHImageManager defaultManager];
-    [imageManager thumbnailImageWithAsset:asset imageSize:size result:resultHandler];
+    CGFloat maximumSide = MAX(asset.pixelWidth, asset.pixelHeight);
+    CGSize imageSize = CGSizeZero;
+    
+    if (maximumSide > 3000.0f) {
+        imageSize = CGSizeMake(3000.0f, 3000.0f);
+    } else {
+        imageSize = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
+    }
+    
+    return imageSize;
+}
+
+- (void)fetchThumbnailImageWithPHAsset:(PHAsset *)asset forSize:(CGSize)size result:(PHImageManagerFetchImageResult)resultHandler
+{
+    [_imageManager thumbnailImageWithAsset:asset imageSize:size result:resultHandler];
+}
+
+- (void)startCacheAssets
+{
+    CGSize imageSize = CGSizeMake(3000.0f, 3000.0f);
+    
+    NSArray *assets = [_fetchResult convertToArray];
+    
+    [_imageManager startCachingImagesForAssets:assets targetSize:imageSize contentMode:PHImageContentModeAspectFit options:nil];
+}
+
+- (void)stopCacheAssets
+{
+    [_imageManager stopCachingImagesForAllAssets];
+}
+
+- (void)fetchImageWithPHAsset:(PHAsset *)asset result:(PHImageManagerFetchImageResult)resultHandler
+{
+    CGSize imageSize = [self imageLimitSizeForAsset:asset];
+    
+    _requestID = [_imageManager imageWithAsset:asset limitSize:imageSize result:resultHandler];
+}
+
+- (void)cancelFetchingImage
+{
+    [_imageManager cancelImageRequest:_requestID];
+}
+
+#pragma mark UIAlertController
+
+- (void)showAlert
+{
+    NSString *title = [DTPhotoBrowerSetting cancelTitle];
+    
+    void (^actionHandler) (UIAlertAction *) = ^(UIAlertAction *action) {
+        [self cancelFetchingImage];
+    };
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleCancel handler:actionHandler];
+    
+    NSString *alertMessage = @"Processing...";
+    _alertController = [UIAlertController alertControllerWithTitle:nil message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
+    [_alertController addAction:cancelAction];
+    
+    [self presentViewController:_alertController animated:YES completion:nil];
+}
+
+- (void)dismissAlertCompletion:(void (^) (void))completion
+{
+    [_alertController dismissViewControllerAnimated:YES completion:completion];
 }
 
 #pragma mark - UICollectionView DataSource
@@ -237,7 +324,7 @@ static NSString *kCellIdentifier = @"Cell";
         [cell.imageView setImage:image];
     };
     
-    [self fetchImageWithPHAsset:asset forSize:imageSize result:resultHandler];
+    [self fetchThumbnailImageWithPHAsset:asset forSize:imageSize result:resultHandler];
     
     return cell;
 }
@@ -246,7 +333,47 @@ static NSString *kCellIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    DTPhotoBrowerCell *cell = (DTPhotoBrowerCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    CGRect cellRect = [self.view convertRect:cell.frame fromView:collectionView];
     
+    NSUInteger index = indexPath.item;
+    NSUInteger totalCount = (_assets != nil) ? _assets.count : _fetchResult.count;
+    NSString *title = [NSString stringWithFormat:@"(%.2tu/%.2tu)", index + 1, totalCount];
+    
+    if (_assets != nil) {
+        ALAsset *asset = _assets[index];
+        ALAssetRepresentation *representation = [asset defaultRepresentation];
+        CGSize assetSize = representation.dimensions;
+        
+        DTPhotoBrowerAssetQuality quality = DTPhotoBrowerAssetQualityFullResolution;
+        
+        // When image's maximum side is large then 3000 pixel, use full screen resolution.
+        if (MAX(assetSize.width, assetSize.height) > 3000.0f) {
+            quality = DTPhotoBrowerAssetQualityScreenResolution;
+        }
+        
+        UIImage *image = [self imageWithAsset:asset forQuality:quality];
+        
+        DTPhotoPreviewController *preview = [DTPhotoPreviewController photoPreviewWithPhoto:image];
+        [preview setTitle:title];
+        [preview pushFromViewController:self appearRect:cellRect];
+        return;
+    }
+    
+    PHAsset *asset = _fetchResult[index];
+    
+    PHImageManagerFetchImageResult resultHandler = ^(UIImage *image){
+        void (^alertDismissCompletion) (void) = ^{
+            DTPhotoPreviewController *preview = [DTPhotoPreviewController photoPreviewWithPhoto:image];
+            [preview setTitle:title];
+            [preview pushFromViewController:self appearRect:cellRect];
+        };
+        
+        [self dismissAlertCompletion:alertDismissCompletion];
+    };
+    
+    [self showAlert];
+    [self fetchImageWithPHAsset:asset result:resultHandler];
 }
 
 #pragma mark - UICollectionView Delegate FlowLayout

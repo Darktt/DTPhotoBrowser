@@ -38,4 +38,34 @@
     [requestOptions release];
 }
 
+- (PHImageRequestID)imageWithAsset:(PHAsset *)asset limitSize:(CGSize)size result:(PHImageManagerFetchImageResult)resultHandler
+{
+    PHImageContentMode contentMode = PHImageContentModeAspectFit;
+    
+    PHImageRequestOptions *requestOptions = [PHImageRequestOptions new];
+    [requestOptions setSynchronous:NO];
+    [requestOptions setDeliveryMode:PHImageRequestOptionsDeliveryModeHighQualityFormat];
+    [requestOptions setResizeMode:PHImageRequestOptionsResizeModeFast];
+    
+    void (^_resultHandler) (UIImage *, NSDictionary *) = ^(UIImage *result, NSDictionary *info) {
+        NSError *error = info[PHImageErrorKey];
+        
+        if (error != nil) {
+            NSLog(@"Request image error: %@", error);
+        }
+        
+        if (resultHandler == nil) return;
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            resultHandler(result);
+        }];
+    };
+    
+    PHImageManager *imageManager = [PHImageManager defaultManager];
+    PHImageRequestID requestID = [imageManager requestImageForAsset:asset targetSize:size contentMode:contentMode options:requestOptions resultHandler:_resultHandler];
+    [requestOptions release];
+    
+    return requestID;
+}
+
 @end

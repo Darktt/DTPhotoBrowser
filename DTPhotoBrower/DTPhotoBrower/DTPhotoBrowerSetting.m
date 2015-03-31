@@ -12,12 +12,22 @@
 
 + (NSString *)titleOfGroupList
 {
-    return NSLocalizedString(@"Groups", @"");
+    return NSLocalizedString(@"Photos", @"");
 }
 
 + (NSString *)cameraRollTitle
 {
     return NSLocalizedString(@"Camera Roll", @"");
+}
+
++ (NSString *)cancelBarButtonTitle
+{
+    return NSLocalizedString(@"Cancel", @"");
+}
+
++ (NSString *)cancelTitle
+{
+    return NSLocalizedString(@"Cancel", @"");
 }
 
 + (PHAssetMediaType)fetchMediaType

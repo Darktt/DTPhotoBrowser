@@ -12,6 +12,14 @@
 
 @interface DTGroupListViewController : UIViewController
 
+@property (readonly) id<DTGroupListViewControllerDelegate> target;
+
 + (instancetype)groupListWithTarget:(id<DTGroupListViewControllerDelegate>)target;
+
+@end
+
+@protocol DTGroupListViewControllerDelegate <NSObject>
+
+- (void)groupListDidDismiss:(DTGroupListViewController *)groupList;
 
 @end
