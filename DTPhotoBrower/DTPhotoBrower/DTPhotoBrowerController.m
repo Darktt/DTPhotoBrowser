@@ -29,11 +29,9 @@ static NSString *kCellIdentifier = @"Cell";
 {
     NSArray *_assets;
     PHFetchResult *_fetchResult;
-    PHCachingImageManager *_imageManager;
     
     UICollectionView *_collectionView;
     
-    PHImageRequestID _requestID;
     UIAlertController *_alertController;
 }
 
@@ -74,7 +72,6 @@ static NSString *kCellIdentifier = @"Cell";
     if (self == nil) return nil;
     
     _fetchResult = [fetchResult retain];
-    _imageManager = [PHCachingImageManager new];
     
     return self;
 }
@@ -129,10 +126,6 @@ static NSString *kCellIdentifier = @"Cell";
     
     [self.view addSubview:_collectionView];
     [collectionViewLayout release];
-    
-    if (_fetchResult != nil) {
-        [self startCacheAssets];
-    }
 }
 
 - (void)dealloc
@@ -145,12 +138,6 @@ static NSString *kCellIdentifier = @"Cell";
     if (_fetchResult != nil) {
         [_fetchResult release];
         _fetchResult = nil;
-    }
-    
-    if (_imageManager != nil) {
-        [self stopCacheAssets];
-        [_imageManager release];
-        _imageManager = nil;
     }
     
     [_collectionView release];
@@ -225,57 +212,16 @@ static NSString *kCellIdentifier = @"Cell";
 
 - (void)fetchThumbnailImageWithPHAsset:(PHAsset *)asset forSize:(CGSize)size result:(PHImageManagerFetchImageResult)resultHandler
 {
-    [_imageManager thumbnailImageWithAsset:asset imageSize:size result:resultHandler];
-}
-
-- (void)startCacheAssets
-{
-    CGSize imageSize = CGSizeMake(3000.0f, 3000.0f);
-    
-    NSArray *assets = [_fetchResult convertToArray];
-    
-    [_imageManager startCachingImagesForAssets:assets targetSize:imageSize contentMode:PHImageContentModeAspectFit options:nil];
-}
-
-- (void)stopCacheAssets
-{
-    [_imageManager stopCachingImagesForAllAssets];
+    PHImageManager *imageManager = [PHImageManager defaultManager];
+    [imageManager thumbnailImageWithAsset:asset imageSize:size result:resultHandler];
 }
 
 - (void)fetchImageWithPHAsset:(PHAsset *)asset result:(PHImageManagerFetchImageResult)resultHandler
 {
     CGSize imageSize = [self imageLimitSizeForAsset:asset];
     
-    _requestID = [_imageManager imageWithAsset:asset limitSize:imageSize result:resultHandler];
-}
-
-- (void)cancelFetchingImage
-{
-    [_imageManager cancelImageRequest:_requestID];
-}
-
-#pragma mark UIAlertController
-
-- (void)showAlert
-{
-    NSString *title = [DTPhotoBrowerSetting cancelTitle];
-    
-    void (^actionHandler) (UIAlertAction *) = ^(UIAlertAction *action) {
-        [self cancelFetchingImage];
-    };
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleCancel handler:actionHandler];
-    
-    NSString *alertMessage = @"Processing...";
-    _alertController = [UIAlertController alertControllerWithTitle:nil message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
-    [_alertController addAction:cancelAction];
-    
-    [self presentViewController:_alertController animated:YES completion:nil];
-}
-
-- (void)dismissAlertCompletion:(void (^) (void))completion
-{
-    [_alertController dismissViewControllerAnimated:YES completion:completion];
+    PHImageManager *imageManager = [PHImageManager defaultManager];
+    [imageManager imageWithAsset:asset limitSize:imageSize result:resultHandler];
 }
 
 #pragma mark - UICollectionView DataSource
@@ -363,16 +309,11 @@ static NSString *kCellIdentifier = @"Cell";
     PHAsset *asset = _fetchResult[index];
     
     PHImageManagerFetchImageResult resultHandler = ^(UIImage *image){
-        void (^alertDismissCompletion) (void) = ^{
-            DTPhotoPreviewController *preview = [DTPhotoPreviewController photoPreviewWithPhoto:image];
-            [preview setTitle:title];
-            [preview pushFromViewController:self appearRect:cellRect];
-        };
-        
-        [self dismissAlertCompletion:alertDismissCompletion];
+        DTPhotoPreviewController *preview = [DTPhotoPreviewController photoPreviewWithPhoto:image];
+        [preview setTitle:title];
+        [preview pushFromViewController:self appearRect:cellRect];
     };
     
-    [self showAlert];
     [self fetchImageWithPHAsset:asset result:resultHandler];
 }
 
