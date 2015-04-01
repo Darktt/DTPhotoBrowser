@@ -140,7 +140,10 @@ CGFloat const kRowHeight = 65.0f;
 
 - (BOOL)prefersStatusBarHidden
 {
-    return NO;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    BOOL hidden = UIDeviceOrientationIsLandscape(orientation);
+    
+    return hidden;
 }
 
 #pragma mark - UI Setup

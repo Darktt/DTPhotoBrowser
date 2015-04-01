@@ -162,7 +162,10 @@ static NSString *kCellIdentifier = @"Cell";
 
 - (BOOL)prefersStatusBarHidden
 {
-    return NO;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    BOOL hidden = UIDeviceOrientationIsLandscape(orientation);
+    
+    return hidden;
 }
 
 #pragma mark - Fetch Image from Asset
@@ -321,7 +324,7 @@ static NSString *kCellIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat width = CGRectGetWidth(collectionView.bounds);
+    CGFloat width = MIN(CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds));
     CGFloat borderWidth = 2.0f;
     
     CGFloat cellWidth = (width - (borderWidth * 3) ) / 4.0f;

@@ -10,7 +10,7 @@
 
 #import "DTPhotoBrowerSetting.h"
 
-@interface DTPhotoPreviewController ()
+@interface DTPhotoPreviewController () <UINavigationControllerDelegate, UIViewControllerAnimatedTransitioning>
 {
     UIImage *_previewImage;
     UIImageView *_previewView;
@@ -83,7 +83,7 @@
     
     NSAssert(_snapshotView != nil, @"Must push view with -pushFromViewController:appearRect:");
     
-    [self setupBackButtonItem];
+    [self.navigationController setDelegate:self];
     [self.navigationController.interactivePopGestureRecognizer setEnabled:NO];
     [self setExtendedLayoutIncludesOpaqueBars:YES];
     
@@ -128,17 +128,22 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
 {
-    return UIStatusBarAnimationSlide;
+    return UIStatusBarAnimationFade;
 }
 
 - (BOOL)prefersStatusBarHidden
 {
-    BOOL hidden = self.navigationController.navigationBarHidden;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    BOOL hidden = UIDeviceOrientationIsLandscape(orientation);
+    
+    if (!hidden) {
+        hidden = self.navigationController.navigationBarHidden;
+    }
     
     return hidden;
 }
@@ -147,23 +152,48 @@
 
 - (CGRect)imageViewRectToFitScreen
 {
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    BOOL isPortrait = (CGRectGetWidth(screenRect) < CGRectGetHeight(screenRect));
+    CGFloat shortSideOfScreen = MIN(CGRectGetWidth(screenRect), CGRectGetHeight(screenRect));
+    CGFloat longSideOfScreen = MAX(CGRectGetWidth(screenRect), CGRectGetHeight(screenRect));
+    
     CGSize imageSize = _previewImage.size;
     
-    CGFloat width = imageSize.width;
-    CGFloat height = imageSize.height;
+    CGFloat width = isPortrait ? imageSize.width : imageSize.height;
+    CGFloat height = isPortrait ? imageSize.height : imageSize.width;
     CGFloat ratio = height / width;
     
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat shortSideOfImageView = shortSideOfScreen;
+    CGFloat longSideOfImageView = shortSideOfScreen * ratio;
     
-    CGFloat imageViewHeight = CGRectGetWidth(screenRect) * ratio;
+    if (longSideOfImageView > longSideOfScreen) {
+        shortSideOfImageView = longSideOfScreen * (width / height);
+        longSideOfImageView = longSideOfScreen;
+    }
+    
+    if (!isPortrait) {
+        CGRect imageViewRect = (CGRect) {
+            .origin = (CGPoint) {
+                .x = (longSideOfScreen - longSideOfImageView) / 2.0f,
+                .y = (shortSideOfScreen - shortSideOfImageView) / 2.0f
+            },
+            .size = (CGSize) {
+                .width = longSideOfImageView,
+                .height = shortSideOfImageView
+            }
+        };
+        
+        return imageViewRect;
+    }
     
     CGRect imageViewRect = (CGRect) {
         .origin = (CGPoint) {
-            .y = (CGRectGetMaxY(screenRect) - imageViewHeight) / 2.0f
+            .x = (shortSideOfScreen - shortSideOfImageView) / 2.0f,
+            .y = (longSideOfScreen - longSideOfImageView) / 2.0f
         },
         .size = (CGSize) {
-            .width = CGRectGetWidth(screenRect),
-            .height = imageViewHeight
+            .width = shortSideOfImageView,
+            .height = longSideOfImageView
         }
     };
     
@@ -177,32 +207,11 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:_previewImage];
     [imageView setFrame:imageViewRect];
     [imageView setBackgroundColor:[UIColor clearColor]];
+//    [imageView setContentMode:UIViewContentModeScaleToFill];
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
     
     return [imageView autorelease];
-}
-
-- (UIImage *)backIndicatorImage
-{
-    return nil;
-}
-
-- (void)setupBackButtonItem
-{
-    UIFont *buttonFont = [UIFont systemFontOfSize:16.0f];
-    
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [backButton setTitle:_previousViewTitle forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(popHandle:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton sizeToFit];
-    
-    [backButton.titleLabel setFont:buttonFont];
-    
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    
-    [self.navigationItem setLeftBarButtonItem:backItem];
-    [backItem release];
 }
 
 - (void)setupAutoresizingMaskWithView:(UIView *)view
@@ -271,7 +280,7 @@
 
 #pragma mark - Pop Handle
 
-- (void)popAnimationHandle
+- (void)popAnimationHandleWithCompletion:(void (^) (BOOL finish))completion
 {
     [_previewView setHidden:YES];
     [_snapshotView setHidden:NO];
@@ -284,19 +293,10 @@
         [transitionImageView setFrame:_appearRect];
     };
     
-    void (^completion) (BOOL) = ^(BOOL finished) {
-        [self.navigationController popViewControllerAnimated:NO];
-    };
-    
     [UIView animateWithDuration:0.25f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:animations completion:completion];
 }
 
 #pragma mark - Actions
-
-- (void)popHandle:(id)sender
-{
-    [self popAnimationHandle];
-}
 
 - (void)applyHandle:(id)sender
 {
@@ -312,6 +312,48 @@
     
     UIColor *backgroundColor = (hidden) ? [UIColor whiteColor] : [UIColor blackColor];
     [self.view setBackgroundColor:backgroundColor];
+}
+
+#pragma mark - UIViewControllerAnimatedTransitioning
+
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
+{
+    return UINavigationControllerHideShowBarDuration;
+}
+
+- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
+{
+    UIView *currentView = [transitionContext containerView];
+    UIViewController *toViewComtroller = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIViewController *fromViewComtroller = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    
+    [currentView addSubview:toViewComtroller.view];
+    [currentView addSubview:fromViewComtroller.view];
+    
+    void (^completion) (BOOL) = ^(BOOL finish){
+        [fromViewComtroller.view removeFromSuperview];
+        
+        [transitionContext finishInteractiveTransition];
+        [transitionContext completeTransition:YES];
+    };
+    
+    [self popAnimationHandleWithCompletion:completion];
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    if (![fromVC isEqual:self]) {
+        return nil;
+    }
+    
+    if (operation == UINavigationControllerOperationPop) {
+        [navigationController setDelegate:nil];
+        return self;
+    }
+    
+    return nil;
 }
 
 @end

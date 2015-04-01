@@ -79,9 +79,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
+{
+    return UIStatusBarAnimationFade;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)openAlbum:(id)sender
 {
-    DTGroupListViewController *groupList = [DTGroupListViewController groupListWithTarget:nil];
+    DTGroupListViewController *groupList = [DTGroupListViewController groupListWithTarget:self];
     
     UINavigationController *__autoreleasing navigation = [[UINavigationController alloc] initWithRootViewController:groupList];
     
