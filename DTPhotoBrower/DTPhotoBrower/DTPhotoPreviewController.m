@@ -207,7 +207,6 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:_previewImage];
     [imageView setFrame:imageViewRect];
     [imageView setBackgroundColor:[UIColor clearColor]];
-//    [imageView setContentMode:UIViewContentModeScaleToFill];
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
     
