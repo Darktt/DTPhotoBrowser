@@ -27,7 +27,7 @@ static NSArray *base16Symbols = nil;
 
 - (id)initWithInteger:(NSInteger)integer
 {
-    self = [self initWithFormat:@"%d", integer];
+    self = [self initWithFormat:@"%zd", integer];
     
     return self;
 }

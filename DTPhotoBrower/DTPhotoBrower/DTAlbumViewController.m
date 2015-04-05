@@ -205,7 +205,8 @@
         if(group != nil) {
             [group setAssetsFilter:kALAssetsFilter];
             
-            NSString *groupName = [NSString stringWithFormat:@"%@ (%d)", [group valueForProperty:ALAssetsGroupPropertyName], [group numberOfAssets]];
+            NSUInteger numberOfAssets = [group numberOfAssets];
+            NSString *groupName = [NSString stringWithFormat:@"%@ (%zd)", [group valueForProperty:ALAssetsGroupPropertyName], numberOfAssets];
             
 //            NSLog(@"Album Name:%@", groupName);
             
@@ -213,7 +214,9 @@
             [albumData setObject:group forKey:kAlassetsGroupKey];
             
             if ([group numberOfAssets] != 0) {
-                [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:[group numberOfAssets] - 1] options:NSEnumerationConcurrent usingBlock:groupEnumerationBlock];
+                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:numberOfAssets - 1];
+                
+                [group enumerateAssetsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:groupEnumerationBlock];
             } else {
                 [albumData setObject:@"" forKey:kLastPhotoKey];
                 [_albums addObject:[[albumData copy] autorelease]];

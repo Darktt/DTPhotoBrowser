@@ -10,6 +10,8 @@
 
 @interface DTViewController : UIViewController
 
+@property (assign) IBOutlet UIButton *button;
+
 - (IBAction)openPhotoBrower:(id)sender;
 
 @end

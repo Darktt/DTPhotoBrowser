@@ -20,6 +20,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    
+    NSLog(@"Screen Rect: %@", NSStringFromCGRect(screenRect));
+    
+    [self.button setCenter:CGPointMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect))];
 }
 
 - (void)didReceiveMemoryWarning
