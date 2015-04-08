@@ -28,7 +28,7 @@ static NSString *kCellIdentifier = @"Cell";
 @interface DTPhotoBrowerController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
     NSArray *_assets;
-    PHFetchResult *_fetchResult;
+    PHFetchResult *_phAssets;
     
     UICollectionView *_collectionView;
     
@@ -46,9 +46,9 @@ static NSString *kCellIdentifier = @"Cell";
     return [photoBrower autorelease];
 }
 
-+ (instancetype)photoBrowerWithFetchResult:(PHFetchResult *)fetchResult
++ (instancetype)photoBrowerWithPHAssets:(PHFetchResult *)assets
 {
-    DTPhotoBrowerController *photoBrower = [[DTPhotoBrowerController alloc] initWithFetchResult:fetchResult];
+    DTPhotoBrowerController *photoBrower = [[DTPhotoBrowerController alloc] initWithPHAssets:assets];
     
     return [photoBrower autorelease];
 }
@@ -66,12 +66,12 @@ static NSString *kCellIdentifier = @"Cell";
     return self;
 }
 
-- (instancetype)initWithFetchResult:(PHFetchResult *)fetchResult
+- (instancetype)initWithPHAssets:(PHFetchResult *)assets
 {
     self = [super init];
     if (self == nil) return nil;
     
-    _fetchResult = [fetchResult retain];
+    _phAssets = [assets retain];
     
     return self;
 }
@@ -135,9 +135,9 @@ static NSString *kCellIdentifier = @"Cell";
         _assets = nil;
     }
     
-    if (_fetchResult != nil) {
-        [_fetchResult release];
-        _fetchResult = nil;
+    if (_phAssets != nil) {
+        [_phAssets release];
+        _phAssets = nil;
     }
     
     [_collectionView release];
@@ -240,7 +240,7 @@ static NSString *kCellIdentifier = @"Cell";
         return _assets.count;
     }
     
-    return _fetchResult.count;
+    return _phAssets.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -262,7 +262,7 @@ static NSString *kCellIdentifier = @"Cell";
     
     CGSize cellSize = [self collectionView:collectionView layout:collectionView.collectionViewLayout sizeForItemAtIndexPath:indexPath];
     
-    PHAsset *asset = _fetchResult[index];
+    PHAsset *asset = _phAssets[index];
     
     CGSize imageSize = (CGSize) {
         .width = cellSize.width * scale,
@@ -286,7 +286,7 @@ static NSString *kCellIdentifier = @"Cell";
     CGRect cellRect = [self.view convertRect:cell.frame fromView:collectionView];
     
     NSUInteger index = indexPath.item;
-    NSUInteger totalCount = (_assets != nil) ? _assets.count : _fetchResult.count;
+    NSUInteger totalCount = (_assets != nil) ? _assets.count : _phAssets.count;
     NSString *title = [NSString stringWithFormat:@"(%.2tu/%.2tu)", index + 1, totalCount];
     
     if (_assets != nil) {
@@ -309,7 +309,7 @@ static NSString *kCellIdentifier = @"Cell";
         return;
     }
     
-    PHAsset *asset = _fetchResult[index];
+    PHAsset *asset = _phAssets[index];
     
     PHImageManagerFetchImageResult resultHandler = ^(UIImage *image){
         DTPhotoPreviewController *preview = [DTPhotoPreviewController photoPreviewWithPhoto:image];

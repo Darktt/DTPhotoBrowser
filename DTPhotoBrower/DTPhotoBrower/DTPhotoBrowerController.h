@@ -12,7 +12,10 @@
 
 @interface DTPhotoBrowerController : UIViewController
 
+// An array contains ALAsset.
 + (instancetype)photoBrowerWithAssets:(NSArray *)assets;
-+ (instancetype)photoBrowerWithFetchResult:(PHFetchResult *)fetchResult;
+
+// A PHFetchResult contains PHAsset
++ (instancetype)photoBrowerWithPHAssets:(PHFetchResult *)assets;
 
 @end
