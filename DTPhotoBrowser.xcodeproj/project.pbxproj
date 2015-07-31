@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5213B9CB1AC536DD00950C97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5213B9CA1AC536DD00950C97 /* main.m */; };
+		5213B9CE1AC536DD00950C97 /* DTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5213B9CD1AC536DD00950C97 /* DTAppDelegate.m */; };
+		5213B9D11AC536DD00950C97 /* DTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5213B9D01AC536DD00950C97 /* DTViewController.m */; };
+		5213B9D61AC536DD00950C97 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5213B9D51AC536DD00950C97 /* Images.xcassets */; };
+		5213B9D91AC536DD00950C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5213B9D71AC536DD00950C97 /* LaunchScreen.xib */; };
+		5213B9EF1AC5389E00950C97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5213B9EE1AC5389E00950C97 /* UIKit.framework */; };
+		5213B9F11AC538AF00950C97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5213B9F01AC538AF00950C97 /* Foundation.framework */; };
+		5213B9F31AC538B700950C97 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5213B9F21AC538B700950C97 /* Photos.framework */; };
+		524D56741ACA49590005106C /* DTPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524D56731ACA49590005106C /* DTPhotoPreviewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		524D56771ACA80360005106C /* PHFetchResult+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 524D56761ACA80360005106C /* PHFetchResult+Array.m */; };
+		525CB2F71AC53B33008A21FE /* DTGroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2F61AC53B33008A21FE /* DTGroupListViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		525CB2FA1AC53B4C008A21FE /* DTPhotoBrowserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2F91AC53B4C008A21FE /* DTPhotoBrowserSetting.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		525CB2FF1AC53C06008A21FE /* PHCollection+Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2FC1AC53C06008A21FE /* PHCollection+Collection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		525CB3001AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		528232001AC93D830076209B /* DTPhotoBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528231FF1AC93D830076209B /* DTPhotoBrowserController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		528232031AC949460076209B /* PHImageManager+ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 528232021AC949460076209B /* PHImageManager+ImageManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		52ECBF181AC94D9600192A4B /* DTPhotoBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECBF171AC94D9600192A4B /* DTPhotoBrowserCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		558C53B01B6BCF3A00042610 /* DTViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558C53B21B6BCF3A00042610 /* DTViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5213B9C51AC536DD00950C97 /* DTPhotoBrower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTPhotoBrower.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5213B9CA1AC536DD00950C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5213B9CC1AC536DD00950C97 /* DTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTAppDelegate.h; sourceTree = "<group>"; };
+		5213B9CD1AC536DD00950C97 /* DTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTAppDelegate.m; sourceTree = "<group>"; };
+		5213B9CF1AC536DD00950C97 /* DTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTViewController.h; sourceTree = "<group>"; };
+		5213B9D01AC536DD00950C97 /* DTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTViewController.m; sourceTree = "<group>"; };
+		5213B9D51AC536DD00950C97 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5213B9D81AC536DD00950C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5213B9E31AC536DD00950C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5213B9E41AC536DD00950C97 /* DTPhotoBrowerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowerTests.m; sourceTree = "<group>"; };
+		5213B9EE1AC5389E00950C97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5213B9F01AC538AF00950C97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5213B9F21AC538B700950C97 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		524D56721ACA49590005106C /* DTPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoPreviewController.h; sourceTree = "<group>"; };
+		524D56731ACA49590005106C /* DTPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoPreviewController.m; sourceTree = "<group>"; };
+		524D56751ACA80360005106C /* PHFetchResult+Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHFetchResult+Array.h"; sourceTree = "<group>"; };
+		524D56761ACA80360005106C /* PHFetchResult+Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHFetchResult+Array.m"; sourceTree = "<group>"; };
+		525CB2F51AC53B33008A21FE /* DTGroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTGroupListViewController.h; sourceTree = "<group>"; };
+		525CB2F61AC53B33008A21FE /* DTGroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTGroupListViewController.m; sourceTree = "<group>"; };
+		525CB2F81AC53B4C008A21FE /* DTPhotoBrowserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowserSetting.h; sourceTree = "<group>"; };
+		525CB2F91AC53B4C008A21FE /* DTPhotoBrowserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowserSetting.m; sourceTree = "<group>"; };
+		525CB2FB1AC53C06008A21FE /* PHCollection+Collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHCollection+Collection.h"; sourceTree = "<group>"; };
+		525CB2FC1AC53C06008A21FE /* PHCollection+Collection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHCollection+Collection.m"; sourceTree = "<group>"; };
+		525CB2FD1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHPhotoLibrary+PhotoLibrary.h"; sourceTree = "<group>"; };
+		525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHPhotoLibrary+PhotoLibrary.m"; sourceTree = "<group>"; };
+		528231FE1AC93D830076209B /* DTPhotoBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowserController.h; sourceTree = "<group>"; };
+		528231FF1AC93D830076209B /* DTPhotoBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowserController.m; sourceTree = "<group>"; };
+		528232011AC949460076209B /* PHImageManager+ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHImageManager+ImageManager.h"; sourceTree = "<group>"; };
+		528232021AC949460076209B /* PHImageManager+ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHImageManager+ImageManager.m"; sourceTree = "<group>"; };
+		52ECBF161AC94D9600192A4B /* DTPhotoBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowserCell.h; sourceTree = "<group>"; };
+		52ECBF171AC94D9600192A4B /* DTPhotoBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowserCell.m; sourceTree = "<group>"; };
+		558C53B11B6BCF3A00042610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DTViewController.xib; sourceTree = "<group>"; };
+		558C53B31B6BCF4400042610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5213B9C21AC536DD00950C97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5213B9F31AC538B700950C97 /* Photos.framework in Frameworks */,
+				5213B9F11AC538AF00950C97 /* Foundation.framework in Frameworks */,
+				5213B9EF1AC5389E00950C97 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5213B9BC1AC536DD00950C97 = {
+			isa = PBXGroup;
+			children = (
+				5213B9C71AC536DD00950C97 /* DTPhotoBrowserDemo */,
+				5213B9F41AC538BD00950C97 /* FrameWorks */,
+				5213B9E11AC536DD00950C97 /* DTPhotoBrowerTests */,
+				5213B9C61AC536DD00950C97 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5213B9C61AC536DD00950C97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5213B9C51AC536DD00950C97 /* DTPhotoBrower.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5213B9C71AC536DD00950C97 /* DTPhotoBrowserDemo */ = {
+			isa = PBXGroup;
+			children = (
+				525CB2F11AC53A74008A21FE /* DTPhotoBrowser */,
+				5213B9CC1AC536DD00950C97 /* DTAppDelegate.h */,
+				5213B9CD1AC536DD00950C97 /* DTAppDelegate.m */,
+				5213B9CF1AC536DD00950C97 /* DTViewController.h */,
+				5213B9D01AC536DD00950C97 /* DTViewController.m */,
+				558C53B21B6BCF3A00042610 /* DTViewController.xib */,
+				5213B9D51AC536DD00950C97 /* Images.xcassets */,
+				5213B9D71AC536DD00950C97 /* LaunchScreen.xib */,
+				5213B9C81AC536DD00950C97 /* Supporting Files */,
+			);
+			name = DTPhotoBrowserDemo;
+			path = DTPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		5213B9C81AC536DD00950C97 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				558C53B41B6BCF4400042610 /* Info.plist */,
+				5213B9CA1AC536DD00950C97 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5213B9E11AC536DD00950C97 /* DTPhotoBrowerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5213B9E41AC536DD00950C97 /* DTPhotoBrowerTests.m */,
+				5213B9E21AC536DD00950C97 /* Supporting Files */,
+			);
+			path = DTPhotoBrowerTests;
+			sourceTree = "<group>";
+		};
+		5213B9E21AC536DD00950C97 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5213B9E31AC536DD00950C97 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5213B9F41AC538BD00950C97 /* FrameWorks */ = {
+			isa = PBXGroup;
+			children = (
+				5213B9F21AC538B700950C97 /* Photos.framework */,
+				5213B9F01AC538AF00950C97 /* Foundation.framework */,
+				5213B9EE1AC5389E00950C97 /* UIKit.framework */,
+			);
+			name = FrameWorks;
+			sourceTree = "<group>";
+		};
+		525CB2F11AC53A74008A21FE /* DTPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				525CB3011AC53C0D008A21FE /* Categories */,
+				525CB2F81AC53B4C008A21FE /* DTPhotoBrowserSetting.h */,
+				525CB2F91AC53B4C008A21FE /* DTPhotoBrowserSetting.m */,
+				525CB2F51AC53B33008A21FE /* DTGroupListViewController.h */,
+				525CB2F61AC53B33008A21FE /* DTGroupListViewController.m */,
+				52ECBF161AC94D9600192A4B /* DTPhotoBrowserCell.h */,
+				52ECBF171AC94D9600192A4B /* DTPhotoBrowserCell.m */,
+				528231FE1AC93D830076209B /* DTPhotoBrowserController.h */,
+				528231FF1AC93D830076209B /* DTPhotoBrowserController.m */,
+				524D56721ACA49590005106C /* DTPhotoPreviewController.h */,
+				524D56731ACA49590005106C /* DTPhotoPreviewController.m */,
+			);
+			path = DTPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		525CB3011AC53C0D008A21FE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				525CB2FB1AC53C06008A21FE /* PHCollection+Collection.h */,
+				525CB2FC1AC53C06008A21FE /* PHCollection+Collection.m */,
+				525CB2FD1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.h */,
+				525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */,
+				528232011AC949460076209B /* PHImageManager+ImageManager.h */,
+				528232021AC949460076209B /* PHImageManager+ImageManager.m */,
+				524D56751ACA80360005106C /* PHFetchResult+Array.h */,
+				524D56761ACA80360005106C /* PHFetchResult+Array.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5213B9C41AC536DD00950C97 /* DTPhotoBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5213B9E81AC536DD00950C97 /* Build configuration list for PBXNativeTarget "DTPhotoBrowser" */;
+			buildPhases = (
+				5213B9C11AC536DD00950C97 /* Sources */,
+				5213B9C21AC536DD00950C97 /* Frameworks */,
+				5213B9C31AC536DD00950C97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DTPhotoBrowser;
+			productName = DTPhotoBrower;
+			productReference = 5213B9C51AC536DD00950C97 /* DTPhotoBrower.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5213B9BD1AC536DD00950C97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DT;
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Darktt;
+				TargetAttributes = {
+					5213B9C41AC536DD00950C97 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 5213B9C01AC536DD00950C97 /* Build configuration list for PBXProject "DTPhotoBrowser" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5213B9BC1AC536DD00950C97;
+			productRefGroup = 5213B9C61AC536DD00950C97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5213B9C41AC536DD00950C97 /* DTPhotoBrowser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5213B9C31AC536DD00950C97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5213B9D91AC536DD00950C97 /* LaunchScreen.xib in Resources */,
+				5213B9D61AC536DD00950C97 /* Images.xcassets in Resources */,
+				558C53B01B6BCF3A00042610 /* DTViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5213B9C11AC536DD00950C97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5213B9D11AC536DD00950C97 /* DTViewController.m in Sources */,
+				525CB2FF1AC53C06008A21FE /* PHCollection+Collection.m in Sources */,
+				5213B9CE1AC536DD00950C97 /* DTAppDelegate.m in Sources */,
+				524D56771ACA80360005106C /* PHFetchResult+Array.m in Sources */,
+				52ECBF181AC94D9600192A4B /* DTPhotoBrowserCell.m in Sources */,
+				524D56741ACA49590005106C /* DTPhotoPreviewController.m in Sources */,
+				528232001AC93D830076209B /* DTPhotoBrowserController.m in Sources */,
+				525CB2FA1AC53B4C008A21FE /* DTPhotoBrowserSetting.m in Sources */,
+				525CB2F71AC53B33008A21FE /* DTGroupListViewController.m in Sources */,
+				5213B9CB1AC536DD00950C97 /* main.m in Sources */,
+				525CB3001AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m in Sources */,
+				528232031AC949460076209B /* PHImageManager+ImageManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5213B9D71AC536DD00950C97 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5213B9D81AC536DD00950C97 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		558C53B21B6BCF3A00042610 /* DTViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				558C53B11B6BCF3A00042610 /* Base */,
+			);
+			name = DTViewController.xib;
+			sourceTree = "<group>";
+		};
+		558C53B41B6BCF4400042610 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				558C53B31B6BCF4400042610 /* Base */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5213B9E61AC536DD00950C97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5213B9E71AC536DD00950C97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5213B9E91AC536DD00950C97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/DTPhotoBrowser/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5213B9EA1AC536DD00950C97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/DTPhotoBrowser/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5213B9C01AC536DD00950C97 /* Build configuration list for PBXProject "DTPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5213B9E61AC536DD00950C97 /* Debug */,
+				5213B9E71AC536DD00950C97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5213B9E81AC536DD00950C97 /* Build configuration list for PBXNativeTarget "DTPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5213B9E91AC536DD00950C97 /* Debug */,
+				5213B9EA1AC536DD00950C97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5213B9BD1AC536DD00950C97 /* Project object */;
+}
