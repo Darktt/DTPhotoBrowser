@@ -133,7 +133,7 @@
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
 {
-    return UIStatusBarAnimationFade;
+    return UIStatusBarAnimationSlide;
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -317,7 +317,7 @@
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
-    return UINavigationControllerHideShowBarDuration;
+    return 0.25f;//UINavigationControllerHideShowBarDuration;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
