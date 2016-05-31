@@ -21,6 +21,7 @@
 		525CB2FA1AC53B4C008A21FE /* DTPhotoBrowserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2F91AC53B4C008A21FE /* DTPhotoBrowserSetting.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		525CB2FF1AC53C06008A21FE /* PHCollection+Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2FC1AC53C06008A21FE /* PHCollection+Collection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		525CB3001AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5280B3F21CFD44930053B972 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5280B3F01CFD44930053B972 /* Info.plist */; };
 		528232001AC93D830076209B /* DTPhotoBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528231FF1AC93D830076209B /* DTPhotoBrowserController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		528232031AC949460076209B /* PHImageManager+ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 528232021AC949460076209B /* PHImageManager+ImageManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		52ECBF181AC94D9600192A4B /* DTPhotoBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECBF171AC94D9600192A4B /* DTPhotoBrowserCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -28,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5213B9C51AC536DD00950C97 /* DTPhotoBrower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTPhotoBrower.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5213B9C51AC536DD00950C97 /* DTPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5213B9CA1AC536DD00950C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5213B9CC1AC536DD00950C97 /* DTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTAppDelegate.h; sourceTree = "<group>"; };
 		5213B9CD1AC536DD00950C97 /* DTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTAppDelegate.m; sourceTree = "<group>"; };
@@ -36,8 +37,6 @@
 		5213B9D01AC536DD00950C97 /* DTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTViewController.m; sourceTree = "<group>"; };
 		5213B9D51AC536DD00950C97 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5213B9D81AC536DD00950C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5213B9E31AC536DD00950C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5213B9E41AC536DD00950C97 /* DTPhotoBrowerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowerTests.m; sourceTree = "<group>"; };
 		5213B9EE1AC5389E00950C97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5213B9F01AC538AF00950C97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5213B9F21AC538B700950C97 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -53,6 +52,7 @@
 		525CB2FC1AC53C06008A21FE /* PHCollection+Collection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHCollection+Collection.m"; sourceTree = "<group>"; };
 		525CB2FD1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHPhotoLibrary+PhotoLibrary.h"; sourceTree = "<group>"; };
 		525CB2FE1AC53C06008A21FE /* PHPhotoLibrary+PhotoLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHPhotoLibrary+PhotoLibrary.m"; sourceTree = "<group>"; };
+		5280B3F11CFD44930053B972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		528231FE1AC93D830076209B /* DTPhotoBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowserController.h; sourceTree = "<group>"; };
 		528231FF1AC93D830076209B /* DTPhotoBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowserController.m; sourceTree = "<group>"; };
 		528232011AC949460076209B /* PHImageManager+ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHImageManager+ImageManager.h"; sourceTree = "<group>"; };
@@ -60,7 +60,6 @@
 		52ECBF161AC94D9600192A4B /* DTPhotoBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPhotoBrowserCell.h; sourceTree = "<group>"; };
 		52ECBF171AC94D9600192A4B /* DTPhotoBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPhotoBrowserCell.m; sourceTree = "<group>"; };
 		558C53B11B6BCF3A00042610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DTViewController.xib; sourceTree = "<group>"; };
-		558C53B31B6BCF4400042610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +81,6 @@
 			children = (
 				5213B9C71AC536DD00950C97 /* DTPhotoBrowserDemo */,
 				5213B9F41AC538BD00950C97 /* FrameWorks */,
-				5213B9E11AC536DD00950C97 /* DTPhotoBrowerTests */,
 				5213B9C61AC536DD00950C97 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,7 +88,7 @@
 		5213B9C61AC536DD00950C97 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5213B9C51AC536DD00950C97 /* DTPhotoBrower.app */,
+				5213B9C51AC536DD00950C97 /* DTPhotoBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,25 +113,8 @@
 		5213B9C81AC536DD00950C97 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				558C53B41B6BCF4400042610 /* Info.plist */,
+				5280B3F01CFD44930053B972 /* Info.plist */,
 				5213B9CA1AC536DD00950C97 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5213B9E11AC536DD00950C97 /* DTPhotoBrowerTests */ = {
-			isa = PBXGroup;
-			children = (
-				5213B9E41AC536DD00950C97 /* DTPhotoBrowerTests.m */,
-				5213B9E21AC536DD00950C97 /* Supporting Files */,
-			);
-			path = DTPhotoBrowerTests;
-			sourceTree = "<group>";
-		};
-		5213B9E21AC536DD00950C97 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5213B9E31AC536DD00950C97 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -198,7 +179,7 @@
 			);
 			name = DTPhotoBrowser;
 			productName = DTPhotoBrower;
-			productReference = 5213B9C51AC536DD00950C97 /* DTPhotoBrower.app */;
+			productReference = 5213B9C51AC536DD00950C97 /* DTPhotoBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -213,6 +194,7 @@
 				TargetAttributes = {
 					5213B9C41AC536DD00950C97 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = HHA6P9K77D;
 					};
 				};
 			};
@@ -239,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5280B3F21CFD44930053B972 /* Info.plist in Resources */,
 				5213B9D91AC536DD00950C97 /* LaunchScreen.xib in Resources */,
 				5213B9D61AC536DD00950C97 /* Images.xcassets in Resources */,
 				558C53B01B6BCF3A00042610 /* DTViewController.xib in Resources */,
@@ -278,20 +261,20 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
+		5280B3F01CFD44930053B972 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5280B3F11CFD44930053B972 /* Base */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 		558C53B21B6BCF3A00042610 /* DTViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				558C53B11B6BCF3A00042610 /* Base */,
 			);
 			name = DTViewController.xib;
-			sourceTree = "<group>";
-		};
-		558C53B41B6BCF4400042610 /* Info.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				558C53B31B6BCF4400042610 /* Base */,
-			);
-			name = Info.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -380,7 +363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/DTPhotoBrowser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DTPhotoBrowser/Base.lproj/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -392,7 +375,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/DTPhotoBrowser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DTPhotoBrowser/Base.lproj/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

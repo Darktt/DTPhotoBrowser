@@ -44,8 +44,10 @@
     
     PHImageRequestOptions *requestOptions = [PHImageRequestOptions new];
     [requestOptions setSynchronous:NO];
+    [requestOptions setVersion:PHImageRequestOptionsVersionCurrent];
     [requestOptions setDeliveryMode:PHImageRequestOptionsDeliveryModeHighQualityFormat];
     [requestOptions setResizeMode:PHImageRequestOptionsResizeModeFast];
+    [requestOptions setNetworkAccessAllowed:YES];
     
     void (^_resultHandler) (UIImage *, NSDictionary *) = ^(UIImage *result, NSDictionary *info) {
         NSError *error = info[PHImageErrorKey];
