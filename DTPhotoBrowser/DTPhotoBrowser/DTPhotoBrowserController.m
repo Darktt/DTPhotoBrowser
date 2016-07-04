@@ -7,7 +7,6 @@
 //
 
 #import "DTPhotoBrowserController.h"
-#import "PHFetchResult+Array.h"
 #import "PHImageManager+ImageManager.h"
 
 #import "DTPhotoBrowserSetting.h"

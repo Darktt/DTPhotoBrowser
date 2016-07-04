@@ -221,7 +221,7 @@ CGFloat const kRowHeight = 65.0f;
 - (PHFetchResult *)assetsInCollection:(PHAssetCollection *)collection
 {
     PHAssetMediaType mediaType = [DTPhotoBrowserSetting fetchMediaType];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"mediaType = %i", mediaType];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"mediaType == %i", mediaType];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
     
     PHFetchOptions *fetchOptions = [PHFetchOptions new];
